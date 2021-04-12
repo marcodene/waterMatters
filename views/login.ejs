@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/" />
+    <link rel="stylesheet" href="css/access.css" />
+    <link rel="stylesheet" href="css/default.css" />
+    <title>Login</title>
+  </head>
+  <body>
+    <div class="container" id="login-container">
+      <div class="text-box">
+        <h1>Welcome back!</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
+          tempor.
+        </p>
+      </div>
+
+      <div class="btn-box" id="login-btn-box">
+        <%- include('./partials/messages') %>
+        <form action="/users/login" method="POST" id="login-form">
+          <div class="input-box">
+            <img class="input-img" src="./img/email-icon.svg" alt="user-icon" />
+            <label for="email"></label>
+            <input
+              name="email"
+              type="email"
+              id="email-input"
+              class="input"
+              placeholder="email"
+            />
+          </div>
+          <div class="input-box">
+            <img
+              class="input-img"
+              src="./img/password-icon.svg"
+              alt="password-icon"
+            />
+            <img
+              id="show-hide"
+              class="input-img show-hide"
+              src="./img/hide-pass-icon.svg"
+              alt="hide-password-icon"
+              onclick="showHideToggle('pass')"
+            />
+            <label for="password"></label>
+            <input
+              name="password"
+              type="password"
+              class="input"
+              placeholder="password"
+              id="password-input"
+            />
+          </div>
+          <a href="" class="forgot-pass"><h6>Forgot password?</h6></a>
+
+          <button type="submit" class="submit-btn">Login</button>
+        </form>
+
+        <div class="loginwith-box">
+          <span class="loginwith-btn">
+            <img src="./img/gogle-icon.svg" alt="gogle icon" />
+            <button>Sign In</button>
+          </span>
+          <span class="loginwith-btn">
+            <img src="./img/faccelibro-icon.svg" alt="fb icon" />
+            <button>Sign In</button>
+          </span>
+        </div>
+
+        <div class="switch-link">
+          Don't have an account?
+          <a href="/users/register">Register now</a>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/access.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+      integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

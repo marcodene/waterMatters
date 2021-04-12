@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/" />
+    <link rel="stylesheet" href="css/access.css" />
+    <link rel="stylesheet" href="css/default.css" />
+    <title>Register</title>
+  </head>
+  <body>
+    <div class="container" id="register-container">
+      <div class="text-box">
+        <h1>Let’s Get Started!</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
+          tempor.
+        </p>
+      </div>
+
+      <div class="btn-box" id="register-btn-box">
+        <%- include('./partials/messages') %> 
+        <form action="/users/register" method="POST" id="register-form">
+          <div class="input-box">
+            <img class="input-img" src="./img/user-icon.svg" alt="user-icon" />
+            <label for="username"></label>
+            <input
+              name="username"
+              type="name"
+              value="<%= typeof username!= 'undefined' ? username:''  %>"
+              id="username-input"
+              class="input"
+              placeholder="username"
+              autocomplete="off"
+            />
+          </div>
+          <div class="input-box">
+            <img class="input-img" src="./img/email-icon.svg" alt="user-icon" />
+            <input
+              type="email"
+              name="email"
+              value="<%= typeof email!= 'undefined' ? email:''  %>"
+              id="email-input"
+              class="input"
+              placeholder="email"
+              autocomplete="off"
+            />
+          </div>
+          <div class="input-box">
+            <img
+              class="input-img"
+              src="./img/password-icon.svg"
+              alt="password-icon"
+            />
+            <img
+              id="show-hide"
+              class="input-img show-hide"
+              src="./img/hide-pass-icon.svg"
+              alt="hide-password-icon"
+              onclick="showHideToggle('pass')"
+            />
+            <input
+              type="password"
+              name="password"
+              value="<%= typeof password!= 'undefined' ? password:''  %>"
+              class="input"
+              placeholder="password"
+              id="password-input"
+              autocomplete="off"
+            />
+            <div class="input-box">
+              <img
+                class="input-img"
+                src="./img/password-icon.svg"
+                alt="password-icon"
+              />
+              <img
+                id="show-hide-confirm"
+                class="input-img show-hide"
+                src="./img/hide-pass-icon.svg"
+                alt="hide-password-icon"
+                onclick="showHideToggle('confirm-pass')"
+              />
+              <input
+                type="password"
+                name="confirmPassword"
+                value="<%= typeof confirmPassword!= 'undefined' ? confirmPassword:''  %>"
+                class="input"
+                placeholder="confirm password"
+                id="confirm-password-input"
+                autocomplete="off"
+              />
+          </div>
+
+          <button type="submit" class="submit-btn">Register</button>
+        </form>
+
+        <div href="" class="switch-link">
+          Already have an acocunt? <a href="/users/login">Login now</a>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/access.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+      integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
