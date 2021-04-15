@@ -7,7 +7,46 @@
     <title>WaterMatters</title>
   </head>
   <body>
-    <h1>Hello <%= user.username %></h1>
+    <h1>Hello <%= user.username%></h1>
+    <form
+      action="javascript:;"
+      onsubmit="searchFriend()"
+      id="search-friend-form"
+    >
+      <label for="username">Search friend: </label>
+      <input
+        type="text"
+        name="username"
+        placeholder="Enter a username"
+        id="search-friend-input"
+      />
+      <button type="submit">Search</button>
+    </form>
+    <form action="javascript:;" onsubmit="addFriend()" id="add-friend-form">
+      <label for="username">Add friend: </label>
+      <input name="username" placeholder="Enter an id" id="add-friend-input" />
+      <button type="submit">Search</button>
+    </form>
+    <form
+      action="javascript:;"
+      onsubmit="removeFriend()"
+      id="remove-friend-form"
+    >
+      <label for="username">Remove friend: </label>
+      <input
+        name="username"
+        placeholder="Enter an id"
+        id="remove-friend-input"
+      />
+      <button type="submit">Search</button>
+    </form>
+
+    <div id="friend-response"></div>
+
+    <button><a href="/profile">Read Profile</a></button>
     <button><a href="/users/logout">Logout</a></button>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/friend.js"></script>
   </body>
 </html>
