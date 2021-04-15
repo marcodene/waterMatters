@@ -77,3 +77,30 @@ const removeFriend = async () => {
     $friendFoundBox.innerHTML = `<h5>Unknown error. Please try again.</h5>`;
   }
 };
+
+const addMeal = async () => {
+  try {
+    const response = await axios.post(`http://localhost:3000/users/history`, [
+      {
+        foodId: "60759e5a5ac9172ee2617c42",
+        portions: 3,
+      },
+      {
+        foodId: "60759e5a5ac9172ee2617c49",
+        portions: 7,
+      },
+    ]);
+    console.log(response.data);
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+const getWaterPrint = async () => {
+  try {
+    const response = await axios.get("http://localhost:3000/users/water-print");
+    console.log(response.data);
+  } catch (e) {
+    console.log(e);
+  }
+};

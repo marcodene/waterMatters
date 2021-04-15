@@ -2,6 +2,10 @@ const express = require("express");
 const router = new express.Router();
 const Food = require("../models/Food");
 
+/**
+ *  @description Add a new food
+ *  @method POST /api/food
+ */
 router.post("/food", async (req, res) => {
   const foodArray = [];
   for (let i in req.body) {
@@ -17,11 +21,15 @@ router.post("/food", async (req, res) => {
   }
 });
 
-// Check if a list of foods exist
+/**
+ *  @description Check if a list of foods exist
+ *  @method GET /api/food
+ */
 router.get("/food", async (req, res) => {
   try {
-    for (let id of req.body) {
-      const foodFound = await Food.exists({ _id: id });
+    for (let food of req.body) {
+      const foodFound = await Food.exists({ _id: food.foodId });
+      console.log(foodFound);
 
       if (!foodFound) {
         res.status(404).send();
@@ -33,7 +41,10 @@ router.get("/food", async (req, res) => {
   }
 });
 
-// Getting a food via its id and returning it
+/**
+ *  @description Getting a food via its id and returning it
+ *  @method GET /api/food/:id
+ */
 router.get("/food/:id", async (req, res) => {
   try {
     const food = await Food.findById(req.params.id);

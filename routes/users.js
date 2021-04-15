@@ -1,6 +1,7 @@
 const express = require("express");
 const passport = require("passport");
 const router = express.Router();
+const axios = require("axios");
 // Load User model
 const User = require("../models/User");
 const { forwardAuthenticated, ensureAuthenticated } = require("../config/auth");
@@ -8,7 +9,7 @@ const validateUser = require("../utils/validateUser");
 
 /**
  * @description Login Page
- * @method GET /login
+ * @method GET /users/login
  */
 router.get("/login", forwardAuthenticated, (req, res) => {
   res.render("login");
@@ -16,7 +17,7 @@ router.get("/login", forwardAuthenticated, (req, res) => {
 
 /**
  * @description Register Page
- * @method GET /register
+ * @method GET /users/register
  */
 router.get("/register", forwardAuthenticated, (req, res) => {
   res.render("register");
@@ -24,7 +25,7 @@ router.get("/register", forwardAuthenticated, (req, res) => {
 
 /**
  * @description Register
- * @method POST /register
+ * @method POST /users/register
  */
 router.post("/register", async (req, res) => {
   const { username, email, password, confirmPassword } = req.body;
@@ -90,7 +91,7 @@ router.post("/register", async (req, res) => {
 
 /**
  * @description Login
- * @method POST /login
+ * @method POST /users/login
  */
 router.post("/login", (req, res, next) => {
   passport.authenticate("local", {
@@ -102,7 +103,7 @@ router.post("/login", (req, res, next) => {
 
 /**
  * @description Logout
- * @method GET /logout
+ * @method GET /users/logout
  */
 router.get("/logout", (req, res) => {
   req.logout();
@@ -112,7 +113,7 @@ router.get("/logout", (req, res) => {
 
 /**
  * @description Delete account
- * @method GET /users/delete
+ * @method GET /users/users/delete
  */
 router.get("/delete", async (req, res) => {
   try {
@@ -158,7 +159,7 @@ router.patch("/edit", async (req, res) => {
 
 /**
  * @description Search for a new user by its username
- * @method GET /friend/:username
+ * @method GET /users/friend/:username
  */
 router.get("/friend/:username", ensureAuthenticated, async (req, res) => {
   try {
@@ -185,7 +186,7 @@ router.get("/friend/:username", ensureAuthenticated, async (req, res) => {
 
 /**
  * @description Add a friend by its id
- * @method GET /friend/:id
+ * @method GET /users/friend/:id
  */
 router.post("/friend/:id", async (req, res) => {
   try {
@@ -231,7 +232,7 @@ router.post("/friend/:id", async (req, res) => {
 
 /**
  *  @description Delete a friend by its id
- *  @method POST /friend/:id
+ *  @method POST /users/friend/:id
  */
 router.delete("/friend/:id", async (req, res) => {
   try {
@@ -254,5 +255,82 @@ router.delete("/friend/:id", async (req, res) => {
 });
 
 //TODO: add operations for food: add a meal and set each food in the foodHistory
+/**
+ *  @description Add a meal to user history and for each food adding it the foodsEaten list and adding their water footprint to the total
+ *  @method POST /users/history
+ */
+router.post("/history", async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id);
+
+    // Check if the ids provided exist in the food database, otherwise a 404 Error will be thrown
+    await axios({
+      method: "get",
+      url: `http://localhost:3000/api/food`,
+      data: req.body,
+    });
+
+    // Adding the new meal to user's history
+    user.history = user.history.concat({
+      foods: req.body,
+      date: Date.now(),
+    });
+
+    // Adding each food of the meal to the foodsEaten list and updating the waterPrint value
+    for (let foodToAdd of req.body) {
+      let hasAlreadyBeenEaten = false;
+
+      // Updating the user's waterPrint value
+      const response = await axios.get(
+        `http://localhost:3000/api/food/${foodToAdd.foodId}`
+      );
+      await User.findOneAndUpdate(
+        { _id: user._id },
+        { $inc: { waterPrint: response.data.waterPrint } }
+      );
+
+      // Checking if there are any item in foodsEaten list and if not we are sure that the food has never been eaten
+      if (user.foodsEaten.length != 0) {
+        // Checking if the foodId matches any food inside foodsEaten list
+        hasAlreadyBeenEaten = user.foodsEaten.some(
+          (food) => food.foodId == foodToAdd.foodId
+        );
+      }
+      if (!hasAlreadyBeenEaten) {
+        // Pushing the foodId provided by the user and its portion to the foodsEaten list
+        user.foodsEaten.push({
+          foodId: foodToAdd.foodId,
+          timesEaten: foodToAdd.portions,
+        });
+      } else {
+        // Since the foodId already exists in the foodsEaten list we have to find its position
+        const foodIndex = user.foodsEaten.findIndex(
+          (food) => food.foodId == foodToAdd.foodId
+        );
+        user.foodsEaten[foodIndex].timesEaten += foodToAdd.portions;
+      }
+
+      await user.save();
+      res.send({
+        history: user.history,
+      });
+    }
+  } catch (e) {
+    res.status(400).send();
+  }
+});
+
+/**
+ *  @description getting user's footprint
+ *  @method GET /users/water-print
+ */
+router.get("/water-print", async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id);
+    res.send(`${user.waterPrint}`);
+  } catch (e) {
+    res.status(400).send();
+  }
+});
 
 module.exports = router;
