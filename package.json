@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon app.js"
+    "dev": "env-cmd -f ./config/dev.env nodemon app.js"
   },
   "keywords": [],
   "author": "",
@@ -18,11 +18,15 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "mongoose": "^5.12.3",
+    "mongoose-findorcreate": "^3.0.0",
     "passport": "^0.4.1",
+    "passport-facebook": "^3.0.0",
+    "passport-google-oauth": "^2.0.0",
     "passport-local": "^1.0.0",
     "validator": "^13.5.2"
   },
   "devDependencies": {
+    "env-cmd": "^10.1.0",
     "nodemon": "^2.0.7"
   }
 }

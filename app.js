@@ -49,6 +49,8 @@ app.use((req, res, next) => {
 
 // Routes
 app.use("/", require("./routes/index.js"));
+app.use("/", require("./routes/google.js"));
+app.use("/", require("./routes/facebook.js"));
 app.use("/users", require("./routes/users.js"));
 app.use("/api", require("./routes/food.js"));
 

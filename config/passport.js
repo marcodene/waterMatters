@@ -1,5 +1,8 @@
 const LocalStrategy = require("passport-local").Strategy;
+var GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
+FacebookStrategy = require("passport-facebook").Strategy;
 const bcrypt = require("bcryptjs");
+const mongoose = require("mongoose");
 
 // Load User model
 const User = require("../models/User");
@@ -17,7 +20,7 @@ module.exports = function (passport) {
 
         // Match password
         bcrypt.compare(password, user.password, (err, isMatch) => {
-          if (err) throw err;
+          if (err) done(err);
           if (isMatch) {
             return done(null, user);
           } else {
@@ -26,6 +29,53 @@ module.exports = function (passport) {
         });
       });
     })
+  );
+
+  passport.use(
+    new GoogleStrategy(
+      {
+        clientID: process.env.googleID,
+        clientSecret: process.env.googleSecret,
+        callbackURL: "http://localhost:3000/google/callback",
+      },
+      function (accessToken, refreshToken, profile, done) {
+        User.findOrCreate(
+          {
+            googleId: profile.id,
+            username: profile._json.name,
+            email: profile._json.email,
+          },
+          function (err, user) {
+            return done(err, user);
+          }
+        );
+      }
+    )
+  );
+
+  passport.use(
+    new FacebookStrategy(
+      {
+        clientID: process.env.facebookID,
+        clientSecret: process.env.facebookSecret,
+        callbackURL: "http://localhost:3000/facebook/callback",
+      },
+      function (accessToken, refreshToken, profile, done) {
+        User.findOrCreate(
+          {
+            facebookId: profile.id,
+            username: profile._json.name,
+            email: profile._json.email,
+          },
+          function (err, user) {
+            if (err) {
+              return done(err);
+            }
+            done(null, user);
+          }
+        );
+      }
+    )
   );
 
   passport.serializeUser(function (user, done) {

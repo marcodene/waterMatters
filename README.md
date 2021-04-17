@@ -20,7 +20,11 @@ $ npm run dev
 
 ### MongoDB
 
-Open "config/keys.js" and add your MongoDB URI, local or Atlas
+Open "config/dev.env" and add your MongoDB URI, local or Atlas.
+
+### Google & Facebook
+
+Open "config/dev.env" and add your clientID and clientSecret.
 
 ### Data
 
