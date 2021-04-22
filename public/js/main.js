@@ -1,5 +1,5 @@
 import data from "/public/js/db.js";
-console.log(data);
+alert("ciao");
 console.log(data.length);
 
 var template = document.querySelector("#template-esempio").innerHTML;
