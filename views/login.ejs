@@ -6,10 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <base href="/" />
     <link rel="stylesheet" href="css/access.css" />
+    <link rel="stylesheet" href="css/responsive/login-register.css" />
     <link rel="stylesheet" href="css/default.css" />
     <title>Login</title>
   </head>
   <body>
+    <div class="logo animation">
+      <img src="img/plastic-bottle.svg" alt="logo" />
+      <h1>WaterMatters</h1>
+    </div>
     <div class="container" id="login-container">
       <div class="text-box">
         <h1>Welcome back!</h1>
@@ -19,7 +24,7 @@
         </p>
       </div>
 
-      <div class="btn-box" id="login-btn-box">
+      <div class="wrapper" id="login-btn-box">
         <%- include('./partials/messages') %>
         <form action="/users/login" method="POST" id="login-form">
           <div class="input-box">
@@ -55,7 +60,7 @@
               id="password-input"
             />
           </div>
-          <a href="" class="forgot-pass"><h6>Forgot password?</h6></a>
+          <!-- <a href="" class="forgot-pass"><h6>Forgot password?</h6></a> -->
 
           <button type="submit" class="submit-btn">Login</button>
         </form>

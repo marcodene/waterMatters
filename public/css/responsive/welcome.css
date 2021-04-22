@@ -1,0 +1,32 @@
+@media only screen and (min-width: 641px) {
+  .logo h1 {
+    font-size: 1.4rem;
+    margin-top: 8px;
+  }
+}
+
+@media only screen and (min-width: 1008px) {
+  .container {
+    flex-direction: row;
+  }
+
+  .logo {
+    flex: 2;
+  }
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  .title h2 {
+    font-size: 1.8rem;
+  }
+
+  #welcome-btn-box {
+    height: 100vh;
+    border-radius: 0;
+    padding: 10% 0;
+  }
+}

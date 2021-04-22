@@ -6,10 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <base href="/" />
     <link rel="stylesheet" href="css/access.css" />
+    <link rel="stylesheet" href="css/responsive/login-register.css" />
     <link rel="stylesheet" href="css/default.css" />
     <title>Register</title>
   </head>
   <body>
+    <div class="logo animation">
+      <img src="img/plastic-bottle.svg" alt="logo" />
+      <h1>WaterMatters</h1>
+    </div>
     <div class="container" id="register-container">
       <div class="text-box">
         <h1>Let’s Get Started!</h1>
@@ -19,7 +24,7 @@
         </p>
       </div>
 
-      <div class="btn-box" id="register-btn-box">
+      <div class="wrapper" id="register-btn-box">
         <%- include('./partials/messages') %> 
         <form action="/users/register" method="POST" id="register-form">
           <div class="input-box">
@@ -69,29 +74,29 @@
               id="password-input"
               autocomplete="off"
             />
-            <div class="input-box">
-              <img
-                class="input-img"
-                src="./img/password-icon.svg"
-                alt="password-icon"
-              />
-              <img
-                id="show-hide-confirm"
-                class="input-img show-hide"
-                src="./img/hide-pass-icon.svg"
-                alt="hide-password-icon"
-                onclick="showHideToggle('confirm-pass')"
-              />
-              <input
-                type="password"
-                name="confirmPassword"
-                value="<%= typeof confirmPassword!= 'undefined' ? confirmPassword:''  %>"
-                class="input"
-                placeholder="confirm password"
-                id="confirm-password-input"
-                autocomplete="off"
-              />
           </div>
+          <div class="input-box">
+            <img
+              class="input-img"
+              src="./img/password-icon.svg"
+              alt="password-icon"
+            />
+            <img
+              id="show-hide-confirm"
+              class="input-img show-hide"
+              src="./img/hide-pass-icon.svg"
+              alt="hide-password-icon"
+              onclick="showHideToggle('confirm-pass')"
+            />
+            <input
+              type="password"
+              name="confirmPassword"
+              value="<%= typeof confirmPassword!= 'undefined' ? confirmPassword:''  %>"
+              class="input"
+              placeholder="confirm password"
+              id="confirm-password-input"
+              autocomplete="off"
+            />
 
           <button type="submit" class="submit-btn">Register</button>
         </form>

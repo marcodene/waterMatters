@@ -1,0 +1,44 @@
+@media only screen and (min-width: 641px) {
+  .logo h1 {
+    font-size: 1.4rem;
+    margin-top: 8px;
+  }
+}
+
+@media only screen and (min-width: 1008px) {
+  body {
+    display: flex;
+  }
+
+  .animation {
+    display: flex;
+  }
+
+  .animation {
+    flex: 3;
+  }
+
+  .container {
+    flex: 2;
+  }
+
+  .wrapper {
+    justify-content: space-evenly;
+    background-color: var(--color3);
+    max-width: 500px;
+  }
+
+  .title h2 {
+    font-size: 1.8rem;
+  }
+
+  .btn {
+    color: var(--white);
+  }
+
+  #welcome-btn-box {
+    height: 100vh;
+    border-radius: 0;
+    padding: 10% 0;
+  }
+}
