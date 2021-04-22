@@ -178,6 +178,10 @@ button {
 .meal-img {
   height: 30px;
   width: 30px;
+  
+  margin: auto;
+  
+  
 
   display: block;
   margin-left: auto;
@@ -231,6 +235,8 @@ button {
 }
 
 .main {
+  margin-top: -20%;
+
   position: absolute;
   top: 500px;
   width: 99%;
