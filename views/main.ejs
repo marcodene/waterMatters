@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food Calculator</title>
+
+
+    <link rel="stylesheet" href="css/main.css"> <!-- link to the main's css file-->
+    <link rel="stylesheet" href="css/default.css"> <!-- general file where all the common propertries/colors are defined -->
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+    <div class="nav-bar">
+      <button class="burger-menu-button">
+        <img 
+          src="./img/burger-menu.svg"
+          class="burger-menu">
+      </button>
+      <h2 class="user-name">Marco De Negri</h2>
+      <button class="user-img-button">
+        <img 
+          src="./img/faccelibro-icon.svg"
+          class="user-img">
+      </button>
+    </div>
+    <div class="header">
+      <h1 class="titolo">Food Calculator</h1>
+      <h3 class="lorem-header">Lorem!</h3>
+    </div>
+    <div class="search">
+      <img 
+        src="./img/search.svg"
+        class="search-img">
+      <input type="text" placeholder="Search for a food..."
+      class="search-bar">
+
+
+    </div>
+    <div class="selection">
+      <div class="meals">
+        
+        <div class="breakfast box-meal">
+        <div class="box-img-meals">
+          <img src="./img/breakfast.svg"
+          class="meal-img">
+        </div>
+          
+          <h3>Breakfast</h3>
+          <img class="arrow-img"
+              src="./img/angle-circle-arrow-down.svg"></img>
+        </div>
+        <div class="lunch box-meal">
+          <div class="box-img-meals">
+            <img src="./img/lunch.svg"
+            class="meal-img">
+          </div>
+          
+          <h3>Lunch</h3>
+          <img class="arrow-img"
+              src="./img/angle-circle-arrow-down.svg"></img>
+          
+        </div>
+        <div class="dinner box-meal">
+          <div class="box-img-meals">
+            <img src="./img/dinner.svg"
+            class="meal-img">
+          </div>
+          
+          <h3>Dinner</h3>
+          <img class="arrow-img"
+              src="./img/angle-circle-arrow-down.svg"></img>
+        </div>
+      </div>
+
+      <div class="filters">
+        <h1 class="select-title">Select Items</h1>
+        <button class="filter-img">
+        <img  src="img/email-icon.svg">
+        </button>
+      </div>
+    </div>
+
+    <div class="main">
+
+
+
+
+      
+    </div>
+
+    
+
+      <script id="template-esempio" type="text/html">
+        <div class="cibo-box">
+          
+            <div class="col form">
+              <form >
+                <input type="checkbox">
+              </form>
+            </div>
+            <div class="col">
+              <img
+                class="food-img" 
+                src="https://png.pngtree.com/png-clipart/20190828/ourmid/pngtree-cheese-pizza-png-image_1709797.jpg">
+            </div>
+            <div class="col info-food">
+              <h1 class="food-name">
+                <span >{{title}}</span>
+              </h1>
+              <p class="food-description">
+                <span >{{description}} {{waterPrint}} {{meal}}</span>
+              </p>
+            </div>
+          
+          
+        </div>
+      </script>  
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
+    <script src="js/main.js" type="module"></script>
+
+  </body>
+</html>

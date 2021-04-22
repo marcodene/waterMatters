@@ -1,0 +1,112 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--black);
+}
+
+.btn-bar {
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 17vh;
+}
+
+.icon-bar {
+  margin: 1rem;
+}
+
+#back-arrow {
+  height: 1.2rem;
+}
+
+#turn-card {
+  height: 1.2rem;
+}
+
+.background {
+  min-height: 80vh;
+  width: 100vw;
+  background-color: var(--white);
+  border-radius: 26px 26px 0 0;
+}
+
+/* CARD */
+
+.card {
+  position: absolute;
+  transform: translateY(-50%);
+  width: 76vw;
+  max-width: 320px;
+  aspect-ratio: 3.2/2;
+  border-radius: 13px;
+  background: linear-gradient(90deg, #222120 0%, #2e2d2b 100%);
+  color: var(--white);
+  padding: 17px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  right: 0;
+  left: 0;
+  margin: auto;
+}
+
+.username {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.date {
+  font-size: 9px;
+}
+
+.date span {
+  font-size: 10px;
+}
+
+.waterPrint {
+  position: absolute;
+  left: 17px;
+  bottom: 17px;
+  font-size: 27px;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 17px;
+  bottom: 17px;
+}
+
+.logo img {
+  width: 17px;
+}
+
+.logo h4 {
+  font-size: 8px;
+  margin-top: 5px;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 7rem;
+}
+
+.container button {
+  border: none;
+  background-color: var(--color3);
+  width: 55vw;
+  padding: 0.6rem 0;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 700;
+}

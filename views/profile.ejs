@@ -4,36 +4,32 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/profile.css" />
+    <link rel="stylesheet" href="css/default.css" />
     <title>Document</title>
   </head>
   <body>
-    <h1>My Profile</h1>
-    <form action="javascript:" onsubmit="updateUser()">
-      <div>
-        <label for="username">Username:</label>
-        <input
-          type="name"
-          name="username"
-          value="<%= user.username %>"
-          id="username-input"
-        />
-      </div>
-
-      <button type="submit">Update</button>
-    </form>
-    <% if (typeof email!= 'undefined') { %>
-    <div>
-      <label for="email">Email:</label>
-      <input
-        type="email"
-        name="email"
-        readonly
-        value="<%= user.email %>"
-        id="email-input"
-      />
+    <div class="btn-bar">
+      <a href="""><img class="icon-bar" id="back-arrow" src="img/back-arrow.svg" alt=""></a>
+      <a><img class="icon-bar" id="turn-card" src="img/turn-card.svg" alt=""></a>
     </div>
-    <% } %>
-    <button><a href="/users/delete">Delete Account</a></button>
+    <div class="background">
+      <div class="card">
+        <h3 class="username">MARCO DE NEGRI</h3>
+        <div class="date">Since <span>17/04/2021</span></div>
+        <h1 class="waterPrint">13432 L</h1>
+        <span class="logo">
+          <img src="img/plastic-bottle-white.png" alt="logo" />
+          <h4>WaterMatters</h4>
+        </span>
+      </div>
+      <div class="container">
+        <button>SHARE</button>
+        <div class="title">RESULTS</div>
+        <div>1637 L</div>
+        <div class="title">SUMMARY</div>
+      </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="js/user.js"></script>
