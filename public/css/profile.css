@@ -1,7 +1,45 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.rotate-card {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.front,
+.back {
+  position: absolute;
+  -webkit-backface-visibility: visible; /* Safari */
+  backface-visibility: hidden;
+}
+
+.front {
+  transform: perspective(600px) rotateY(0deg);
+}
+
+.back {
+  transform: perspective(600px) rotateY(180deg);
+}
+
+.rotate-card:hover > .front {
+  transform: perspective(600px) rotateY(-180deg);
+}
+
+.rotate-card:hover > .back {
+  transform: perspective(600px) rotateY(0deg);
+}
+
 * {
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
 }
 
 body {
@@ -39,24 +77,32 @@ body {
 .card {
   position: absolute;
   transform: translateY(-50%);
-  width: 76vw;
-  max-width: 320px;
-  aspect-ratio: 3.2/2;
-  border-radius: 13px;
-  background: linear-gradient(90deg, #222120 0%, #2e2d2b 100%);
   color: var(--white);
-  padding: 17px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  width: 350px;
+  height: 190px;
   right: 0;
   left: 0;
   margin: auto;
+  z-index: 1;
+}
+
+.card > .front,
+.card > .back {
+  box-sizing: border-box;
+  width: 350px;
+  height: 190px;
+  border-radius: 13px;
+  padding: 17px;
+  background: linear-gradient(90deg, #222120 0%, #2e2d2b 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: transform 0.6s linear;
 }
 
 .username {
-  font-size: 14px;
-  margin-bottom: 5px;
+  font-size: 13px;
+  margin-bottom: 3px;
 }
 
 .date {
@@ -71,7 +117,7 @@ body {
   position: absolute;
   left: 17px;
   bottom: 17px;
-  font-size: 27px;
+  font-size: 25px;
 }
 
 .logo {
@@ -93,20 +139,145 @@ body {
   margin-top: 5px;
 }
 
-.container {
+.main {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 7rem;
+  padding: 7rem 3rem 0 3rem;
 }
 
-.container button {
-  border: none;
+.main a {
+  margin: 1rem 0;
   background-color: var(--color3);
-  width: 55vw;
-  padding: 0.6rem 0;
+  width: 55%;
+  height: 36px;
   border-radius: 10px;
-  font-size: 1rem;
   font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.main a span {
+  position: relative;
+  top: 1px;
+}
+
+.title {
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+
+.title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 40%;
+  width: 100%;
+  height: 1px;
+  background-color: #c4c4c4;
+}
+
+.title h3 {
+  color: #787878;
+  line-height: 100%;
+  background-color: var(--white);
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  padding: 0 1rem;
+}
+
+.result-text {
+  font-size: 5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.result-text span {
+  font-size: 2.3rem;
+}
+
+.info-box {
+  margin: 1.5rem 0;
+}
+
+.info {
+  display: grid;
+  grid-template-columns: 35% 65%;
+  font-size: 1rem;
+  overflow: auto;
+}
+
+.info span {
+  font-size: 0.8rem;
+  color: #787878;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 70% 10% 20%;
+  align-items: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 10px 0;
+}
+
+.stats-grid span {
+  float: right;
+}
+
+.stats-grid img {
+  width: 25px;
+  margin-right: 15px;
+}
+
+.times {
+  color: var(--grey);
+  font-size: 0.8rem;
+}
+
+.stats-block {
+  position: relative;
+  width: 170px;
+  height: 170px;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0.5rem 0;
+}
+
+.stats-block > .front,
+.stats-block > .back {
+  width: 170px;
+  height: 170px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 14px;
+  transition: transform 0.3s linear;
+}
+
+.stats-block > .front {
+  justify-content: space-around;
+}
+
+.stats-block > .back {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: 1fr 3fr;
+  justify-items: center;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.stats-block > .front img {
+  width: 30px;
+}
+
+.stats-block > .front span {
+  font-size: 1.5rem;
+}
+
+.stats-block > .back p {
+  width: 100%;
+  overflow-wrap: anywhere;
+  align-self: baseline;
+  color: var(--grey);
+  font-size: 0.8rem;
+  text-align: start;
 }

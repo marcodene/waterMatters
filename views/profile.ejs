@@ -4,32 +4,134 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="css/profile.css" />
     <link rel="stylesheet" href="css/default.css" />
-    <title>Document</title>
+    <title>PROFILE</title>
   </head>
   <body>
     <div class="btn-bar">
       <a href="""><img class="icon-bar" id="back-arrow" src="img/back-arrow.svg" alt=""></a>
-      <a><img class="icon-bar" id="turn-card" src="img/turn-card.svg" alt=""></a>
     </div>
     <div class="background">
-      <div class="card">
-        <h3 class="username">MARCO DE NEGRI</h3>
+
+      <div class="card rotate-card">
+        <div class="front">
+          <h3 class="username">MARCO DE NEGRI</h3>
         <div class="date">Since <span>17/04/2021</span></div>
-        <h1 class="waterPrint">13432 L</h1>
+        <h3 class="waterPrint">13432 L</h3>
         <span class="logo">
           <img src="img/plastic-bottle-white.png" alt="logo" />
           <h4>WaterMatters</h4>
         </span>
+        </div>
+        <div class="back">
+          
+        <span class="logo">
+          <img src="img/plastic-bottle-white.png" alt="logo" />
+          <h4>WaterMatters</h4>
+        </span>
+        </div>
       </div>
-      <div class="container">
-        <button>SHARE</button>
-        <div class="title">RESULTS</div>
-        <div>1637 L</div>
-        <div class="title">SUMMARY</div>
+
+      
+      <div class="container main">
+        <a class="container"><span>SHARE</span></a>
+
+        <!-- INFO -->
+        <span class="full-width">
+          <div class="title"><h3>INFO</h3></div>
+          <div class="full-width info-box">
+            <h4 class="info"><span class="label">Username</span>Marco De Negri</h4>
+            <h4 class="info"><span class="label">Email</span>mdenegri03@gmail.com</h4>
+          </div>
+        </span>
+
+        <!-- RESULTS -->
+        <span class="full-width">
+          <div class="title"><h3>RESULTS</h3></div>
+          <div class="result-text">1637<span>L</span></div>
+        </span>
+
+        <!-- STATS -->
+        <div class="title"><h3>STATS</h3></div>
+        <div class="full-width stats-grid">
+          GLASSES
+          <img src="img/water-glass.svg" alt="">
+          <span class="container">
+            <span>1890</span>
+            <p class="times">times</span>
+          </span>
+        </div>
+        <div class="full-width stats-grid">
+          BOTTLES
+          <img src="img/milk-water-bottle.svg" alt="">
+          <span class="container">
+            <span>867</span>
+            <p class="times">times</p>
+          </span>
+        </div>
+        <div class="full-width stats-grid">
+          WASHING MACHINE
+          <img src="img/washing-machine.svg" alt="">
+          <span class="container">
+            <span>867</span>
+            <p class="times">times</p>
+          </span>
+        </div>
+
+        <!-- STATS BIG -->
+        <div class="title"><h3>STATS</h3></div>
+
+        <div class="stats-block rotate-card">
+          <div class="front container">
+            GLASSES
+            <img src="img/water-glass.svg" alt="">
+            <span class="container">
+              <span>1890</span>
+              <p class="times">times</p>
+            </span>
+          </div>
+          <div class="back container">
+            GLASSES
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce justo.</p>
+          </div>
+        </div>
+
+        <div class="stats-block rotate-card">
+          <div class="front container">
+            BOTTLES
+            <img src="img/milk-water-bottle.svg" alt="">
+            <span class="container">
+              <span>1890</span>
+              <p class="times">times</p>
+            </span>
+          </div>
+          <div class="back container">
+            BOTTLES
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce justo.</p>
+          </div>
+        </div>
+
+        <div class="stats-block rotate-card">
+          <div class="front container">
+            WASHING MACHINE
+            <img src="img/washing-machine.svg" alt="">
+            <span class="container">
+              <span>1890</span>
+              <p class="times">times</p>
+            </span>
+          </div>
+          <div class="back container">
+            WASHING MACHINE
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce justo.</p>
+          </div>
+        </div>
+        
+
       </div>
     </div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="js/user.js"></script>
