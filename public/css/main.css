@@ -46,10 +46,25 @@ button{
 }
 
 .meal{
-  width: 33%;
-
   border: 1px solid black;
-  border-radius: 5px;
+  border-radius: 10px;
+
+  background-color: #FDBD10;
+
+  width: 33%;
+  text-align: center;
+}
+
+.meal-img{
+  width: 2.5em;
+
+}
+
+.meal-arrow{
+  width: 2.5em;
+
+  transform: rotate(-90deg);
+
 }
 
 /* //////////////////////////////////////////////////////////////////////////////////////////// */
