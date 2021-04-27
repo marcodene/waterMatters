@@ -13,13 +13,12 @@
     <div class="btn-bar">
       <a href="""><img class="icon-bar" id="back-arrow" src="img/back-arrow.svg" alt=""></a>
     </div>
-    <div class="background">
-
+    <div class="background"> 
       <div class="card rotate-card">
         <div class="front">
-          <h3 class="username">MARCO DE NEGRI</h3>
-        <div class="date">Since <span>17/04/2021</span></div>
-        <h3 class="waterPrint">13432 L</h3>
+          <h3 class="username"><%= user.username.toUpperCase() %> </h3>
+        <div class="date">Since <span><%= `${user.createdAt.getMonth() + 1}-${user.createdAt.getDate()}-${user.createdAt.getFullYear()}` %> </span></div>
+        <h3 class="waterPrint"><%= user.waterPrint %> L</h3>
         <span class="logo">
           <img src="img/plastic-bottle-white.png" alt="logo" />
           <h4>WaterMatters</h4>
@@ -42,15 +41,17 @@
         <span class="full-width">
           <div class="title"><h3>INFO</h3></div>
           <div class="full-width info-box">
-            <h4 class="info"><span class="label">Username</span>Marco De Negri</h4>
-            <h4 class="info"><span class="label">Email</span>mdenegri03@gmail.com</h4>
+            <h4 class="info"><span class="label">Username</span><%= user.username %> </h4>
+            <% if (user.email) { %>
+              <h4 class="info"><span class="label">Email</span><%= user.email %> </h4>
+            <% } %>
           </div>
         </span>
 
         <!-- RESULTS -->
         <span class="full-width">
           <div class="title"><h3>RESULTS</h3></div>
-          <div class="result-text">1637<span>L</span></div>
+          <div class="result-text"><%= user.waterPrint %> <span>L</span></div>
         </span>
 
         <!-- STATS -->
@@ -59,7 +60,7 @@
           GLASSES
           <img src="img/water-glass.svg" alt="">
           <span class="container">
-            <span>1890</span>
+            <span><%= user.waterPrint / 0.2 %></span>
             <p class="times">times</span>
           </span>
         </div>
@@ -67,7 +68,7 @@
           BOTTLES
           <img src="img/milk-water-bottle.svg" alt="">
           <span class="container">
-            <span>867</span>
+            <span><%= user.waterPrint / 0.5 %></span>
             <p class="times">times</p>
           </span>
         </div>
@@ -75,7 +76,7 @@
           WASHING MACHINE
           <img src="img/washing-machine.svg" alt="">
           <span class="container">
-            <span>867</span>
+            <span><%= user.waterPrint / 23 %></span>
             <p class="times">times</p>
           </span>
         </div>
@@ -88,13 +89,13 @@
             GLASSES
             <img src="img/water-glass.svg" alt="">
             <span class="container">
-              <span>1890</span>
+              <span><%= user.waterPrint / 0.2 %></span>
               <p class="times">times</p>
             </span>
           </div>
           <div class="back container">
             GLASSES
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce justo.</p>
+            <p>0.2L</p>
           </div>
         </div>
 
@@ -103,13 +104,13 @@
             BOTTLES
             <img src="img/milk-water-bottle.svg" alt="">
             <span class="container">
-              <span>1890</span>
+              <span><%= user.waterPrint / 0.5 %></span>
               <p class="times">times</p>
             </span>
           </div>
           <div class="back container">
             BOTTLES
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce justo.</p>
+            <p>0.5L</p>
           </div>
         </div>
 
@@ -118,13 +119,13 @@
             WASHING MACHINE
             <img src="img/washing-machine.svg" alt="">
             <span class="container">
-              <span>1890</span>
+              <span><%= user.waterPrint / 23 %></span>
               <p class="times">times</p>
             </span>
           </div>
           <div class="back container">
             WASHING MACHINE
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce justo.</p>
+            <p>23L per KG</p>
           </div>
         </div>
         
@@ -134,6 +135,7 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
     <script src="js/user.js"></script>
   </body>
 </html>
