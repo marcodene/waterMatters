@@ -1,11 +1,7 @@
 html {
-  margin: 0 0 0 0;
 
   margin-block-start: 0em;
   margin-block-end: 0em;
-}
-body{
-  margin: 0 0 0 0;
 }
 
 /* //////////////////////////////////////////////////////////////////////////////////////////// */
@@ -53,7 +49,7 @@ button{
   padding-top: 20px;
 
   display: grid;
-  grid-template-columns: 10% 90%;
+  grid-template-columns: 10% 75%;
 }
 
 .search-img{
@@ -97,11 +93,15 @@ input{
 
 .meal{
   margin: 0 10px;
+  background-color: white;
   
   
 
   width: 20%;
   text-align: center;
+
+  filter: drop-shadow(0px 3px 14px rgba(0, 0, 0, 0.2));
+  border-radius: 17px;
 }
 .meal-img-box{
   
@@ -191,15 +191,22 @@ input{
 
 .cibo-box {
   width: 100%;
+  background-color: transparent;
 
   display: inline-grid;
   grid-gap: 0px;
   grid-auto-flow: column;
   grid-template-columns: 12% 30% 56%;
+
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 17px;
+
+  
 }
 
 .food-img {
-  width: 100px;
+  width: 90px;
+  background-color: transparent;
 }
 
 .food-name {
@@ -239,6 +246,9 @@ input{
 
 .info-food {
   width: 90%;
+
+  text-align: left;
+
 }
 
 .form {
@@ -274,6 +284,7 @@ input{
 }
 
 .button-box{
+  background-color: transparent;
   width: 100%;
 
 
