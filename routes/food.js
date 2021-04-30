@@ -29,7 +29,6 @@ router.get("/food", async (req, res) => {
   try {
     for (let food of req.body) {
       const foodFound = await Food.exists({ _id: food.foodId });
-      console.log(foodFound);
 
       if (!foodFound) {
         res.status(404).send();

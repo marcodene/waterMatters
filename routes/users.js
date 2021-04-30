@@ -76,7 +76,6 @@ router.post("/register", async (req, res) => {
       req.flash("success_msg", "You are now registered and can log in");
       res.redirect("/users/login");
     } catch (e) {
-      console.log(e);
       errors.push({ msg: `Unknown error. Please try again` });
       res.render("register", {
         errors,
@@ -131,14 +130,11 @@ router.get("/delete", async (req, res) => {
  * @method PATCH /users/edit
  */
 router.patch("/edit", async (req, res) => {
-  console.log(req.body);
   const updates = Object.keys(req.body);
-  console.log("updates: ", updates);
   const allowedUpdates = ["username"];
   const isValidOperation = updates.every((update) =>
     allowedUpdates.includes(update)
   );
-  console.log("isValidOperation: ", isValidOperation);
 
   if (!isValidOperation) {
     return res.status(400).send({ error: "Invalid Updates!" });
@@ -146,10 +142,8 @@ router.patch("/edit", async (req, res) => {
 
   try {
     const user = await User.findById(req.user._id);
-    console.log("user before: ", user);
     updates.forEach((update) => (user[update] = req.body[update]));
     await user.save();
-    console.log("user after: ", user);
 
     res.send(user);
   } catch (e) {
@@ -158,7 +152,25 @@ router.patch("/edit", async (req, res) => {
 });
 
 /**
- * @description Search for a new user by its username
+ * @description Get friend's waterPrint
+ * @method GET /users/friends
+ */
+router.get("/friends", ensureAuthenticated, async (req, res) => {
+  try {
+    const waterPrints = await Promise.all(
+      req.user.friends.map(async (friend) => {
+        const user = await User.findById(friend._id);
+        return user.waterPrint;
+      })
+    );
+    res.send(waterPrints);
+  } catch (e) {
+    res.status(400).send(e);
+  }
+});
+
+/**
+ * @description Search for a user by its username
  * @method GET /users/friend/:username
  */
 router.get("/friend/:username", ensureAuthenticated, async (req, res) => {
@@ -186,12 +198,18 @@ router.get("/friend/:username", ensureAuthenticated, async (req, res) => {
 
 /**
  * @description Add a friend by its id
- * @method GET /users/friend/:id
+ * @method POST /users/friend/:id
  */
 router.post("/friend/:id", async (req, res) => {
   try {
     const user = await User.findById(req.user._id);
     const friend = await User.findById(req.params.id);
+
+    const searchingYourself = friend._id === user._id;
+
+    if (searchingYourself) {
+      return res.status(400).send();
+    }
 
     if (!friend) {
       return res.status(404).send();
@@ -232,7 +250,7 @@ router.post("/friend/:id", async (req, res) => {
 
 /**
  *  @description Delete a friend by its id
- *  @method POST /users/friend/:id
+ *  @method DELETE /users/friend/:id
  */
 router.delete("/friend/:id", async (req, res) => {
   try {
@@ -254,7 +272,6 @@ router.delete("/friend/:id", async (req, res) => {
   }
 });
 
-//TODO: add operations for food: add a meal and set each food in the foodHistory
 /**
  *  @description Add a meal to user history and for each food adding it the foodsEaten list and adding their water footprint to the total
  *  @method POST /users/history

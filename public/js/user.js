@@ -2,7 +2,6 @@ const $usernameInput = document.querySelector("#username-input");
 
 const updateUser = async () => {
   const username = $usernameInput.value;
-  console.log(username);
 
   try {
     const response = await axios({
@@ -12,8 +11,5 @@ const updateUser = async () => {
         username: `${username}`,
       },
     });
-    console.log(response.data);
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 };

@@ -87,6 +87,8 @@ module.exports = function (passport) {
       const userObject = user.toObject();
 
       delete userObject.password;
+      delete userObject.googleId;
+      delete userObject.facebookId;
 
       done(err, userObject);
     });

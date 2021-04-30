@@ -13,8 +13,6 @@ const searchFriend = async () => {
     const response = await axios.get(
       `http://localhost:3000/users/friend/${username}`
     );
-    console.log(response);
-    console.log(response.data);
 
     $friendFoundBox.innerHTML = `<h5>${response.data.username}</h5>`;
   } catch (e) {
@@ -23,9 +21,6 @@ const searchFriend = async () => {
     }
 
     $friendFoundBox.innerHTML = `<h5>Unknown error. Please try again.</h5>`;
-
-    console.log(e.response.status);
-    console.log(e.response.data);
   }
 };
 
@@ -38,9 +33,6 @@ const addFriend = async () => {
       `http://localhost:3000/users/friend/${username}`
     );
 
-    console.log(response);
-    console.log(response.data);
-
     $friendFoundBox.innerHTML = `<h5>${response.data.friend.username}</h5>`;
   } catch (e) {
     if (e.response.status === 404) {
@@ -50,7 +42,6 @@ const addFriend = async () => {
     if (e.response.data.error) {
       return ($friendFoundBox.innerHTML = `<h5>${e.response.data.error}</h5>`);
     }
-    console.log(e.response);
 
     $friendFoundBox.innerHTML = `<h5>Unknown error. Please try again.</h5>`;
   }
@@ -64,9 +55,6 @@ const removeFriend = async () => {
     const response = await axios.delete(
       `http://localhost:3000/users/friend/${username}`
     );
-
-    console.log(response);
-    console.log(response.data);
 
     $friendFoundBox.innerHTML = `<h5>${response.data}</h5>`;
   } catch (e) {
@@ -90,17 +78,11 @@ const addMeal = async () => {
         portions: 7,
       },
     ]);
-    console.log(response.data);
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 };
 
 const getWaterPrint = async () => {
   try {
     const response = await axios.get("http://localhost:3000/users/water-print");
-    console.log(response.data);
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 };

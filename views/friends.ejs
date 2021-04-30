@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/friends.css" />
+    <link rel="stylesheet" href="css/default.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="full-width nav-bar">
+      <a href="/">
+        <img src="img/line-angle-left.svg" alt="back arrow" />
+      </a>
+      <img id="add-button" src="img/add-friend.svg" alt="add friend" />
+    </div>
+
+    <h1 class="full-width title">FRIENDS</h1>
+    <div class="container">
+      <div id="card-box">
+        <% for( let friend of user.friends ) { %>
+        <div class="card" id="card">
+          <h3 class="username"><%= friend.username %></h3>
+          <img class="zoom-in" src="img/zoom-in-card.png" alt="a zoom icon" />
+          <h2 class="water-print"></h2>
+
+          <span class="logo">
+            <img src="img/plastic-bottle-white.png" alt="logo" />
+            <h4>WaterMatters</h4>
+          </span>
+        </div>
+        <% } %>
+      </div>
+      <div class="button-box">
+        <div class="btn container" id="action-button"><h3>REMOVE</h3></div>
+        <div class="btn back container"><h3>BACK</h3></div>
+      </div>
+    </div>
+
+    <div class="add-friend-section">
+      <form class="search full-width container" id="search-form">
+        <img src="img/search.svg" alt="" />
+        <input type="text" placeholder="Search a friend ..." />
+      </form>
+      <div class="card" id="search-friend-card">
+        <h3 class="username">...</h3>
+        <h2 class="water-print">... L</h2>
+
+        <span class="logo">
+          <img src="img/plastic-bottle-white.png" alt="logo" />
+          <h4>WaterMatters</h4>
+        </span>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      const user = <%- JSON.stringify(user) %>;
+    </script>
+    <script src="js/friends.js"></script>
+  </body>
+</html>
