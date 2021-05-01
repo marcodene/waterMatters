@@ -3,7 +3,16 @@ console.log(data.length);
 
 var template = document.querySelector("#template-esempio").innerHTML;
 const main = document.querySelector(".main");
+
+
+
+
 console.log(main);
+
+function change_background(button){
+  button.style.backgroundColor = "yellow"
+}
+
 
 let i;
 for (i = 0; i < data.length; i++) {
@@ -11,3 +20,4 @@ for (i = 0; i < data.length; i++) {
 
   main.insertAdjacentHTML("beforeend", html);
 }
+
