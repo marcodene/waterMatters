@@ -1,7 +1,3 @@
-import data from "/js/db.js";
-
-var template = document.querySelector("#template-esempio").innerHTML;
-const main = document.querySelector(".main");
 const body = document.querySelector("body")
 
 const breakfast_button = document.querySelector(".meal-button.breakfast")
@@ -36,40 +32,20 @@ function change_background(){
 
 body.addEventListener("click", change_background);  
 
-
-
-
-
 breakfast_button.onclick = function(){
-  breakfast_boolean = true
-  lunch_boolean = false
-  dinner_boolean = false
-}
-
-lunch_button.onclick = function(){
-  breakfast_boolean = false
-  lunch_boolean = true
-  dinner_boolean = false
-}
-
-dinner_button.onclick = function(){
-  breakfast_boolean = false
-  lunch_boolean = false
-  dinner_boolean = true
-}
-
-
-
-
-function change_background(button){
-  button.style.backgroundColor = "yellow"
-}
-
-
-let i;
-for (i = 0; i < data.length; i++) {
-  var html = Mustache.render(template, data[i]);
-
-  main.insertAdjacentHTML("beforeend", html);
-}
-
+    breakfast_boolean = true
+    lunch_boolean = false
+    dinner_boolean = false
+  }
+  
+  lunch_button.onclick = function(){
+    breakfast_boolean = false
+    lunch_boolean = true
+    dinner_boolean = false
+  }
+  
+  dinner_button.onclick = function(){
+    breakfast_boolean = false
+    lunch_boolean = false
+    dinner_boolean = true
+  }
