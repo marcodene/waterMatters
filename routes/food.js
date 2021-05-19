@@ -22,6 +22,19 @@ router.post("/food", async (req, res) => {
 });
 
 /**
+ *  @description Get all foods from a meal
+ *  @method GET /api/foods
+ */
+router.get("/foods/:meal", async (req, res) => {
+  try {
+    const foods = await Food.find({ meal: req.params.meal });
+    res.status(200).send(foods);
+  } catch (e) {
+    res.status(400).send(e);
+  }
+});
+
+/**
  *  @description Check if a list of foods exist
  *  @method GET /api/food
  */

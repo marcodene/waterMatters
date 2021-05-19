@@ -41,4 +41,12 @@
     border-radius: 0;
     padding: 10% 0;
   }
+
+  .input-box {
+    background-color: #fcfcfc;
+  }
+
+  .switch-link {
+    color: #505050;
+  }
 }

@@ -188,6 +188,7 @@
 }
 
 .submit-btn {
+  cursor: pointer;
   border: none;
   border-radius: 30px;
   background-color: var(--black);
@@ -206,6 +207,10 @@
   margin-top: 0.4rem;
 }
 
+.loginwith-btn:hover {
+  transform: scale(1.05);
+}
+
 .loginwith-btn {
   position: relative;
   width: 45%;
@@ -221,6 +226,7 @@
 }
 
 .loginwith-btn button {
+  cursor: pointer;
   border: 1px solid #eeeeee;
   background-color: var(--white);
   width: 100%;

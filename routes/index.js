@@ -7,9 +7,9 @@ router.get("/welcome", forwardAuthenticated, (req, res) => {
   res.render("welcome");
 });
 
-// Index
+// Main
 router.get("/", ensureAuthenticated, (req, res) =>
-  res.render("index", {
+  res.render("main", {
     user: req.user,
   })
 );
@@ -47,8 +47,5 @@ router.get("/friends", ensureAuthenticated, (req, res) => {
     // },
   });
 });
-
-// Main
-router.get("/main", (req, res) => res.render("main"));
 
 module.exports = router;

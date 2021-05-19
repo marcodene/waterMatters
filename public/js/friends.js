@@ -40,7 +40,7 @@ for (i = 0; i < friendCards.length; i++) {
   const response = await axios.get("http://localhost:3000/users/friends");
 
   response.data.forEach((waterPrint, index) => {
-    waterPrintItem[index].innerText = waterPrint;
+    waterPrintItem[index].innerText = `${waterPrint} L`;
   });
 })();
 
