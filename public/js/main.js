@@ -1,5 +1,7 @@
 var template = document.querySelector("#template-esempio").innerHTML;
 const main = document.querySelector(".main");
+const foodBoxes = document.querySelectorAll(".meal-box");
+const $breakfastBox = document.querySelector(".breakfast");
 const body = document.querySelector("body");
 
 const breakfast_button = document.querySelector(".meal-button.breakfast");
@@ -7,22 +9,31 @@ const lunch_button = document.querySelector(".meal button.lunch");
 const dinner_button = document.querySelector(".meal button.dinner");
 const meals = document.querySelectorAll(".meal");
 const $loadingItem = document.querySelector("#loading");
+const $calculateLoading = document.querySelector(".calculate-loading");
 
 const loadFood = async (meal) => {
+  const $mealBox = document.querySelector(`.${meal}`);
   try {
-    const response = await axios.get(`http://localhost:3000/api/foods/${meal}`);
+    const response = await axios.get(
+      `http://localhost:3000/api/foods/${meal === "breakfast" ? meal : "lunch"}`
+    );
     var foods = response.data;
 
     if (foods.length === 0) {
-      console.log(foods);
       return ($loadingItem.innerText = "No food found!");
     }
 
     $loadingItem.style.display = "none";
     for (let food of foods) {
+      if (meal === "dinner") {
+        food.meal = "dinner";
+      }
+
+      const imgNameFormatted = encodeURI(food.name);
+      food = { ...food, img: `/img/foods/${imgNameFormatted}.png` };
       var html = Mustache.render(template, food);
 
-      main.insertAdjacentHTML("beforeend", html);
+      $mealBox.insertAdjacentHTML("beforeend", html);
     }
   } catch (e) {
     $loadingItem.style.display = "block";
@@ -31,55 +42,9 @@ const loadFood = async (meal) => {
 };
 
 loadFood("breakfast");
-
-console.log(meals);
-// breakfast_button.style.backgroundColor = "#FDBD10";
-
-// var breakfast_boolean = true;
-// var lunch_boolean = false;
-// var dinner_boolean = false;
-
-// function change_background() {
-//   if (breakfast_boolean) {
-//     breakfast_button.style.backgroundColor = "#FDBD10";
-//     lunch_button.style.backgroundColor = "white";
-//     dinner_button.style.backgroundColor = "white";
-//   }
-//   if (lunch_boolean) {
-//     breakfast_button.style.backgroundColor = "white";
-//     lunch_button.style.backgroundColor = "#FDBD10";
-//     dinner_button.style.backgroundColor = "white";
-//   }
-//   if (dinner_boolean) {
-//     breakfast_button.style.backgroundColor = "white";
-//     lunch_button.style.backgroundColor = "white";
-//     dinner_button.style.backgroundColor = "#FDBD10";
-//   }
-// }
-
-// body.addEventListener("click", change_background);
-
-// breakfast_button.onclick = function () {
-//   breakfast_boolean = true;
-//   lunch_boolean = false;
-//   dinner_boolean = false;
-// };
-
-// lunch_button.onclick = function () {
-//   breakfast_boolean = false;
-//   lunch_boolean = true;
-//   dinner_boolean = false;
-// };
-
-// dinner_button.onclick = function () {
-//   breakfast_boolean = false;
-//   lunch_boolean = false;
-//   dinner_boolean = true;
-// };
-
-// function change_background(button){
-//   button.style.backgroundColor = "yellow"
-// }
+loadFood("lunch");
+loadFood("dinner");
+$breakfastBox.style.display = "block";
 
 const changeBackground = (itemIndex) => {
   for (item of meals) {
@@ -90,11 +55,89 @@ const changeBackground = (itemIndex) => {
 };
 
 const changeFoods = async (meal) => {
-  const foodItems = document.querySelectorAll(".button-box");
-  for (let food of foodItems) {
-    food.remove();
+  // const foodItems = document.querySelectorAll(".food-box");
+  // for (let food of foodItems) {
+  //   food.remove();
+  // }
+  // $loadingItem.style.display = "block";
+  // $loadingItem.innerText = "Loading food ...";
+  // await loadFood(meal);
+  const $mealBox = document.querySelector(`.${meal}`);
+
+  for (let box of foodBoxes) {
+    box.style.display = "none";
   }
-  $loadingItem.style.display = "block";
-  $loadingItem.innerText = "Loading food ...";
-  await loadFood(meal);
+  $mealBox.style.display = "block";
+};
+
+const foodSelected = [];
+
+const handleCounterClick = (_id, meal, action) => {
+  const $counter = document.querySelector(`.${meal} [id='${_id}'] #counter`);
+  const $decrease = document.querySelector(`.${meal} [id='${_id}'] #decrease`);
+  const $selected = document.querySelector(`.${meal} [id='${_id}'] .selected`);
+  let counter = parseInt($counter.innerText);
+
+  // if (!foodSelected[_id]) {
+  //   foodSelected[_id] = 0;
+  // }
+
+  const isFoodAlreadyBeenSelected = foodSelected.some(
+    (food) => food.foodId === _id
+  );
+  if (!isFoodAlreadyBeenSelected) {
+    foodSelected.push({
+      foodId: _id,
+      portions: 0,
+    });
+  }
+
+  console.log(foodSelected);
+
+  foodIndex = foodSelected.findIndex((food) => food.foodId === _id);
+
+  console.log(foodIndex);
+
+  if (action === "increase") {
+    // foodSelected[_id] += 1;
+    foodSelected[foodIndex].portions += 1;
+    counter += 1;
+  }
+  if (action === "decrease") {
+    // foodSelected[_id] -= 1;
+    foodSelected[foodIndex].portions -= 1;
+    counter -= 1;
+  }
+
+  if (counter <= 0) {
+    counter = 0;
+    // foodSelected[_id] = 0;
+    foodSelected[foodIndex].portions = 0;
+    $decrease.classList.add("disabled");
+    $selected.style.right = "0px";
+  } else {
+    $decrease.classList.remove("disabled");
+    $selected.style.right = "4px";
+  }
+
+  $counter.innerText = counter;
+};
+
+const handleCalculateClick = async () => {
+  if (foodSelected.length === 0) {
+    return alert("Please select some food");
+  }
+  console.log(foodSelected);
+  $calculateLoading.style.display = "flex";
+
+  try {
+    const response = await axios.post(
+      "http://localhost:3000/users/history",
+      foodSelected
+    );
+    console.log(response);
+    window.location = "http://localhost:3000/result";
+  } catch (e) {
+    alert("Somethig went wrong. Please refresh the page and try again");
+  }
 };

@@ -5,11 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href="css/profile.css" />
-    <link rel="stylesheet" href="css/default.css" />
+    <link rel="stylesheet" href="http://localhost:3000/css/profile.css" />
+    <link rel="stylesheet" href="http://localhost:3000/css/default.css" />
     <title>PROFILE</title>
   </head>
   <body>
+    <base href="/">
     <div class="btn-bar">
       <a href="/"><img class="icon-bar" id="back-arrow" src="img/back-arrow.svg" alt=""></a>
     </div>
@@ -24,8 +25,10 @@
           <h4>WaterMatters</h4>
         </span>
         </div>
-        <div class="back">
+        <div class="back">  
           
+        <!-- <img src="/img/qr-code.png" alt="" class="qr-code"> -->
+        <img src="https://api.qrserver.com/v1/create-qr-code/?data=http://localhost:3000/profile/<%= user._id %>&size=170x170&bgcolor=242424&color=fff" alt="" class="qr-code">
         <span class="logo">
           <img src="img/plastic-bottle-white.png" alt="logo" />
           <h4>WaterMatters</h4>
@@ -35,107 +38,291 @@
 
       
       <div class="container main">
-        <a class="container"><span>SHARE</span></a>
-
-        <!-- INFO -->
-        <span class="full-width">
-          <div class="title"><h3>INFO</h3></div>
-          <div class="full-width info-box">
-            <h4 class="info"><span class="label">Username</span><%= user.username %> </h4>
-            <% if (user.email) { %>
-              <h4 class="info"><span class="label">Email</span><%= user.email %> </h4>
-            <% } %>
-          </div>
-        </span>
-
         <!-- RESULTS -->
-        <span class="full-width">
-          <div class="title"><h3>RESULTS</h3></div>
-          <div class="result-text"><%= user.waterPrint %> <span>L</span></div>
-        </span>
-
-        <!-- STATS -->
-        <div class="title"><h3>STATS</h3></div>
-        <div class="full-width stats-grid">
-          GLASSES
-          <img src="img/water-glass.svg" alt="">
-          <span class="container">
-            <span><%= Math.floor(user.waterPrint / 0.2) %></span>
-            <p class="times">times</span>
+        <% if (mode === 'result') { %>
+         
+          <span class="full-width">
+            <div class="title"><h3>RESULT</h3></div>
+            <div class="result-text"><%= user.history[user.history.length-1].waterPrint %> <span>L</span></div>
           </span>
-        </div>
-        <div class="full-width stats-grid">
-          BOTTLES
-          <img src="img/milk-water-bottle.svg" alt="">
-          <span class="container">
-            <span><%= Math.floor(user.waterPrint / 0.5) %></span>
-            <p class="times">times</p>
+          
+          <!-- STATS BIG -->
+          <div class="title"><h3>STATS</h3></div>
+          
+          <div class="stats-block rotate-card">
+            <div class="front container">
+              GLASSES
+              <img src="img/stats/glass.svg" alt="">
+              <span class="container">
+                <span class="stat-number"><%= Math.floor(user.history[user.history.length-1].waterPrint / 0.2) %></span>
+                <p class="times">times</p>
+              </span>
+            </div>
+            <div class="back container">
+              GLASSES
+              <p>0.2L</p>
+            </div>
+          </div>
+          
+          <div class="stats-block rotate-card">
+            <div class="front container">
+              BOTTLES
+              <img src="img/stats/bottle.svg" alt="">
+              <span class="container">
+                <span class="stat-number"><%= Math.floor(user.history[user.history.length-1].waterPrint / 0.5) %></span>
+                <p class="times">times</p>
+              </span>
+            </div>
+            <div class="back container">
+              BOTTLES
+              <p>0.5L</p>
+            </div>
+          </div>
+          
+          <div class="stats-block rotate-card">
+            <div class="front container">
+              TOILET
+              <img src="img/stats/toilet.svg" alt="">
+              <span class="container">
+                <span class="stat-number"><%= Math.floor(user.history[user.history.length-1].waterPrint / 7) %></span>
+                <p class="times">times</p>
+              </span>
+            </div>
+            <div class="back container">
+              TOILET
+              <p>23L per KG</p>
+            </div>
+          </div>
+
+          <div class="stats-block rotate-card">
+            <div class="front container">
+              WASHING MACHINE
+              <img src="img/stats/washing-machine.svg" alt="">
+              <span class="container">
+                <span class="stat-number"><%= Math.floor(user.history[user.history.length-1].waterPrint / 23) %></span>
+                <p class="times">times</p>
+              </span>
+            </div>
+            <div class="back container">
+              WASHING MACHINE
+              <p>0.2L</p>
+            </div>
+          </div>
+          
+          <div class="stats-block rotate-card">
+            <div class="front container">
+              DISHWASHER
+              <img src="img/stats/dishwasher.svg" alt="">
+              <span class="container">
+                <span class="stat-number"><%= Math.floor(user.history[user.history.length-1].waterPrint / 40) %></span>
+                <p class="times">times</p>
+              </span>
+            </div>
+            <div class="back container">
+              DISHWASHER
+              <p>0.5L</p>
+            </div>
+          </div>
+          
+          <div class="stats-block rotate-card">
+            <div class="front container">
+              BATH
+              <img src="img/stats/bath.svg" alt="">
+              <span class="container">
+                <span class="stat-number"><%= Math.floor(user.history[user.history.length-1].waterPrint / 80) %></span>
+                <p class="times">times</p>
+              </span>
+            </div>
+            <div class="back container">
+              BATH
+              <p>23L per KG</p>
+            </div>
+          </div>
+
+          <div class="stats-block rotate-card">
+            <div class="front container">
+              SHOWER
+              <img src="img/stats/shower.svg" alt="">
+              <span class="container">
+                <span class="stat-number"><%= Math.floor(user.history[user.history.length-1].waterPrint / 110) %></span>
+                <p class="times">times</p>
+              </span>
+            </div>
+            <div class="back container">
+              SHOWER
+              <p>23L per KG</p>
+            </div>
+          </div>
+
+          <div class="stats-block rotate-card">
+            <div class="front container">
+              T-SHIRT
+              <img src="img/stats/t-shirt.svg" alt="">
+              <span class="container">
+                <span class="stat-number"><%= Math.floor(user.history[user.history.length-1].waterPrint / 2700) %></span>
+                <p class="times">times</p>
+              </span>
+            </div>
+            <div class="back container">
+              T-SHIRT
+              <p>23L per KG</p>
+            </div>
+          </div>
+
+          <div class="stats-block rotate-card">
+            <div class="front container">
+              ATLANTIC
+              <img src="img/stats/atlantic.svg" alt="">
+              <span class="container">
+                <span class="stat-number"><%= Math.floor(user.history[user.history.length-1].waterPrint / 323600000000) %></span>
+                <p class="times">%</p>
+              </span>
+            </div>
+            <div class="back container">
+              ATLANTIC
+              <p>23L per KG</p>
+            </div>
+          </div>
+
+          <div class="stats-block rotate-card">
+            <div class="front container">
+              PACIFIC
+              <img src="img/stats/pacific.svg" alt="">
+              <span class="container">
+                <span class="stat-number"><%= Math.floor(user.history[user.history.length-1].waterPrint / 764330000000) %></span>
+                <p class="times">%</p>
+              </span>
+            </div>
+            <div class="back container">
+              PACIFIC
+              <p>23L per KG</p>
+            </div>
+          </div>
+
+          <a class="container profile" href="/profile"><span>VIEW FULL PROFILE</span></a>
+        <% } %>
+          
+          
+          
+        <% if (mode === 'profile') { %>
+          <a class="container share" onclick="handleShareClick()"><span>SHARE</span></a>
+
+          <!-- INFO -->
+          <span class="full-width">
+            <div class="title"><h3>INFO</h3></div>
+            <div class="full-width info-box">
+              <h4 class="info"><span class="label">Username</span><%= user.username %> </h4>
+              <% if (user.email) { %>
+                <h4 class="info"><span class="label">Email</span><%= user.email %> </h4>
+              <% } %>
+            </div>
           </span>
-        </div>
-        <div class="full-width stats-grid">
-          WASHING MACHINE
-          <img src="img/washing-machine.svg" alt="">
-          <span class="container">
-            <span><%= Math.floor(user.waterPrint / 23) %></span>
-            <p class="times">times</p>
-          </span>
-        </div>
+        <% } %>
 
-        <!-- STATS BIG -->
-        <div class="title"><h3>STATS</h3></div>
-
-        <div class="stats-block rotate-card">
-          <div class="front container">
-            GLASSES
-            <img src="img/water-glass.svg" alt="">
-            <span class="container">
-              <span><%= Math.floor(user.waterPrint / 0.2) %></span>
-              <p class="times">times</p>
-            </span>
-          </div>
-          <div class="back container">
-            GLASSES
-            <p>0.2L</p>
-          </div>
-        </div>
-
-        <div class="stats-block rotate-card">
-          <div class="front container">
-            BOTTLES
-            <img src="img/milk-water-bottle.svg" alt="">
-            <span class="container">
-              <span><%= Math.floor(user.waterPrint / 0.5) %></span>
-              <p class="times">times</p>
-            </span>
-          </div>
-          <div class="back container">
-            BOTTLES
-            <p>0.5L</p>
-          </div>
-        </div>
-
-        <div class="stats-block rotate-card">
-          <div class="front container">
-            WASHING MACHINE
-            <img src="img/washing-machine.svg" alt="">
-            <span class="container">
-              <span><%= Math.floor(user.waterPrint / 23) %></span>
-              <p class="times">times</p>
-            </span>
-          </div>
-          <div class="back container">
-            WASHING MACHINE
-            <p>23L per KG</p>
-          </div>
-        </div>
-        
-
+        <% if (mode === 'profile' || mode === 'id') { %>
+         <!-- STATS -->
+         <div class="title"><h3>STATS</h3></div>
+         <div class="full-width stats-grid">
+           GLASSES
+           <img src="img/stats/glass.svg" alt="">
+           <span class="container">
+             <span class="stat-number"><%= Math.floor(user.waterPrint / 0.2) %></span>
+             <p class="times">times</span>
+           </span>
+         </div>
+         <div class="full-width stats-grid">
+           BOTTLES
+           <img src="img/stats/bottle.svg" alt="">
+           <span class="container">
+             <span class="stat-number"><%= Math.floor(user.waterPrint / 0.5) %></span>
+             <p class="times">times</p>
+           </span>
+         </div>
+         <div class="full-width stats-grid">
+           TOILET
+           <img src="img/stats/toilet.svg" alt="">
+           <span class="container">
+             <span class="stat-number"><%= Math.floor(user.waterPrint / 7) %></span>
+             <p class="times">times</p>
+           </span>
+         </div>
+         <div class="full-width stats-grid">
+           WASHING MACHINE
+           <img src="img/stats/washing-machine.svg" alt="">
+           <span class="container">
+             <span class="stat-number"><%= Math.floor(user.waterPrint / 23) %></span>
+             <p class="times">times</span>
+           </span>
+         </div>
+         <div class="full-width stats-grid">
+           DISHWASHER
+           <img src="img/stats/dishwasher.svg" alt="">
+           <span class="container">
+             <span class="stat-number"><%= Math.floor(user.waterPrint / 40) %></span>
+             <p class="times">times</p>
+           </span>
+         </div>
+         <div class="full-width stats-grid">
+           BATH
+           <img src="img/stats/bath.svg" alt="">
+           <span class="container">
+             <span class="stat-number"><%= Math.floor(user.waterPrint / 80) %></span>
+             <p class="times">times</p>
+           </span>
+         </div>
+         <div class="full-width stats-grid">
+           SHOWER
+           <img src="img/stats/shower.svg" alt="">
+           <span class="container">
+             <span class="stat-number"><%= Math.floor(user.waterPrint / 110) %></span>
+             <p class="times">times</p>
+           </span>
+         </div>
+         <div class="full-width stats-grid">
+           T-SHIRT
+           <img src="img/stats/t-shirt.svg" alt="">
+           <span class="container">
+             <span class="stat-number"><%= Math.floor(user.waterPrint / 2700) %></span>
+             <p class="times">times</p>
+           </span>
+         </div>
+         <div class="full-width stats-grid">
+           ATLANTIC
+           <img src="img/stats/atlantic.svg" alt="">
+           <span class="container">
+             <span class="stat-number"><%= Math.floor(user.waterPrint / 323600000000) %></span>
+             <p class="times">%</p>
+           </span>
+         </div>
+         <div class="full-width stats-grid">
+           PACIFIC
+           <img src="img/stats/pacific.svg" alt="">
+           <span class="container">
+             <span class="stat-number"><%= Math.floor(user.waterPrint / 764330000000) %></span>
+             <p class="times">%</p>
+           </span>
+         </div>
+        <% } %>
       </div>
     </div>
 
+    <div class="shadow container" style="display: none;">
+      <div class="share-card">
+        <h1>Share your link with your friends</h1>
+        <div class="close container" onclick="handleCloseShareClick()">
+          <img src="img/close.svg" alt="">
+        </div>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?data=http://localhost:3000/profile/<%= user._id %>&size=170x170&bgcolor=fff&color=242424" alt="">
+        <h3>Page Link</h3>
+        <div class="link-box" onclick="handleCopy()">
+          <div>
+            <h3 id="text-to-copy">http://localhost:3000/profile/<%= user._id %></h3>
+          </div>
+          <img src="/img/copy-link.svg" alt="">
+        </div>
+      </div>
+    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
-    <script src="js/requests/user.js"></script>
+    <script src="http://localhost:3000/js/profile.js"></script>
   </body>
 </html>

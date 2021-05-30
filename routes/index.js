@@ -1,6 +1,9 @@
 const express = require("express");
 const { forwardAuthenticated, ensureAuthenticated } = require("../config/auth");
 const router = express.Router();
+// Load User model
+const User = require("../models/User");
+const validateUser = require("../utils/validateUser");
 
 // Welcome Page
 router.get("/welcome", forwardAuthenticated, (req, res) => {
@@ -17,7 +20,36 @@ router.get("/", ensureAuthenticated, (req, res) =>
 // Profile
 router.get("/profile", ensureAuthenticated, (req, res) => {
   res.render("profile", {
+    mode: "profile",
     user: req.user,
+  });
+});
+
+// Result
+router.get("/result", ensureAuthenticated, (req, res) => {
+  res.render("profile", {
+    mode: "result",
+    user: req.user,
+  });
+});
+
+// User profile
+router.get("/profile/:id", async (req, res) => {
+  const user = await User.findById(req.params.id);
+
+  const validatedUser = validateUser(user, [
+    "email",
+    "password",
+    "friends",
+    "foodsEaten",
+    "history",
+    "updatedAt",
+  ]);
+  console.log(validatedUser);
+
+  res.render("profile", {
+    mode: "id",
+    user: validatedUser,
   });
 });
 

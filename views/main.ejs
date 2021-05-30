@@ -87,7 +87,7 @@
       </div>
       <div
         class="meal container"
-        onclick="changeBackground(2); changeFoods('lunch')"
+        onclick="changeBackground(2); changeFoods('dinner')"
       >
         <img class="meal-img" src="\img\dinner.svg" />
         <h2>Dinner</h2>
@@ -97,47 +97,72 @@
 
     <div class="select-item PADDING">
       <h2>Select Items:</h2>
-      <button class="filter-button">
-        <img class="icon" src="\img\filters 1.png" />
-      </button>
     </div>
 
-    <div class="calculate">
+    <!-- <div class="calculate">
       <button class="calculate-button">
         <img class="calculate-img" src="/img/calc.png" />
       </button>
+    </div> -->
+    <div class="calculate" onclick="handleCalculateClick()">
+      <img src="/img/calculator.png" alt="" />
     </div>
 
     <div class="main PADDING">
       <p id="loading">Loading food ...</p>
+      <div class="breakfast meal-box" style="display: none"></div>
+      <div class="lunch meal-box" style="display: none"></div>
+      <div class="dinner meal-box" style="display: none"></div>
+    </div>
+
+    <div class="calculate-loading container" style="display: none">
+      <div class="lds-spinner">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
 
     <script id="template-esempio" type="text/html">
-      <button class="button-box">
-        <div class="cibo-box">
-
-          <div class="col form">
-            <div class="fake-checkbox">
-              <div class="fake-checkbox-2"></div>
-
-            </div>
+      <div class="food-box" id="{{_id}}">
+        <div class="selected"></div>
+        <img src="{{img}}" alt="" />
+        <div class="col">
+          <div class="food-title">
+            <h1>{{name}}</h1>
+            <p>{{description}}</p>
           </div>
-          <div class="col">
-            <img
-              class="food-img"
-              src="https://png.pngtree.com/png-clipart/20190828/ourmid/pngtree-cheese-pizza-png-image_1709797.jpg">
+          <div class="waterPrint">
+            <h1>{{waterPrint}}</h1>
+            <p>l/Kg</p>
           </div>
-          <div class="col info-food">
-            <h1 class="food-name">
-              <span >{{name}}</span>
-            </h1>
-            <p class="food-description">
-              <span >{{description}} {{waterPrint}} {{meal}}</span>
-            </p>
-          </div>
-
-        </
-        </button>
+        </div>
+        <div class="counter">
+          <h1
+            id="decrease"
+            class="disabled"
+            onclick="handleCounterClick('{{_id}}', '{{meal}}', 'decrease')"
+          >
+            -
+          </h1>
+          <h1 id="counter">0</h1>
+          <h1
+            id="increase"
+            onclick="handleCounterClick('{{_id}}', '{{meal}}', 'increase')"
+          >
+            +
+          </h1>
+        </div>
+      </div>
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>

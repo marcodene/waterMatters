@@ -277,6 +277,7 @@ router.delete("/friend/:id", async (req, res) => {
  *  @method POST /users/history
  */
 router.post("/history", async (req, res) => {
+  console.log(req.body);
   try {
     const user = await User.findById(req.user._id);
 
@@ -293,9 +294,12 @@ router.post("/history", async (req, res) => {
       date: Date.now(),
     });
 
+    let waterPrintAdded = 0;
+
     // Adding each food of the meal to the foodsEaten list and updating the waterPrint value
     for (let foodToAdd of req.body) {
       let hasAlreadyBeenEaten = false;
+      console.log(foodToAdd);
 
       // Updating the user's waterPrint value
       const response = await axios.get(
@@ -303,8 +307,16 @@ router.post("/history", async (req, res) => {
       );
       await User.findOneAndUpdate(
         { _id: user._id },
-        { $inc: { waterPrint: response.data.waterPrint } }
+        {
+          $inc: {
+            waterPrint: parseInt(response.data.waterPrint) * foodToAdd.portions,
+          },
+        }
       );
+
+      waterPrintAdded +=
+        parseInt(response.data.waterPrint) * foodToAdd.portions;
+      console.log(waterPrintAdded);
 
       // Checking if there are any item in foodsEaten list and if not we are sure that the food has never been eaten
       if (user.foodsEaten.length != 0) {
@@ -326,12 +338,17 @@ router.post("/history", async (req, res) => {
         );
         user.foodsEaten[foodIndex].timesEaten += foodToAdd.portions;
       }
-
-      await user.save();
-      res.send({
-        history: user.history,
-      });
     }
+
+    console.log(user.history[user.history.length - 1]);
+    console.log(waterPrintAdded);
+    user.history[user.history.length - 1].waterPrint = waterPrintAdded;
+    console.log(user);
+
+    await user.save();
+    res.send({
+      history: user.history,
+    });
   } catch (e) {
     res.status(400).send();
   }

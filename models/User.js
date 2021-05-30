@@ -54,6 +54,7 @@ const userSchema = new mongoose.Schema(
     history: [
       {
         date: { type: Date },
+        waterPrint: { type: Number, default: 0 },
         foods: [
           {
             foodId: { type: mongoose.ObjectId },
