@@ -24,3 +24,8 @@ body {
 .full-width {
   width: 100%;
 }
+
+.disable-scroll {
+  height: 100%;
+  overflow: hidden;
+}

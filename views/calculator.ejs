@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food Calculator</title>
+
+    <link rel="stylesheet" href="css/default.css" />
+    <link rel="stylesheet" href="css/nav.css" />
+    <link rel="stylesheet" href="css/calculator.css" />
+    <!-- link to the main's css file-->
+    <!-- general file where all the common propertries/colors are defined -->
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="nav-bar" role="navigation">
+      <!-- <a href="/friends">
+        <img class="icon" src="\img\addFriend 1.png" />
+      </a> -->
+      <h3 class="user-name"><%= user.username %></h3>
+      <!-- <a href="/profile">
+        <img class="icon" src="/img/card-icon.png" />
+      </a> -->
+      <div class="menu-btn">
+        <div class="menu-btn__burger"></div>
+      </div>
+      <nav>
+        <ul class="container">
+          <li><a href="/main">MAIN</a></li>
+          <li>
+            <a><s>CALCULATOR</s></a>
+          </li>
+          <li><a href="/profile">PROFILE</a></li>
+          <li><a href="/friends">FRIENDS</a></li>
+        </ul>
+
+        <div class="splash"></div>
+      </nav>
+    </header>
+    <main>
+      <div class="header PADDING">
+        <h1 class="title">WaterMatters</h1>
+        <p class="sub-title">The best water-print calculator!</p>
+      </div>
+
+      <div class="search-div PADDING" style="display: none">
+        <img class="search-img" src="\img\search.svg" />
+        <form>
+          <input type="text" value="Search for a food" />
+        </form>
+      </div>
+      <div class="select-meal PADDING">
+        <!-- <div class="meal">
+          <button class="meal-button breakfast">
+            <div class="meal-img-box">
+              <img class="meal-img" src="\img\breakfast.svg" />
+            </div>
+  
+            <h3 class="meal-name">Breakfast</h3>
+            <img class="meal-arrow" src="\img\angle-circle-arrow-down.svg" />
+          </button>
+        </div>
+        <div class="meal">
+          <button class="meal-button lunch">
+            <div class="meal-img-box">
+              <img class="meal-img" src="\img\lunch.svg" />
+            </div>
+  
+            <h3 class="meal-name">Lunch</h3>
+            <img class="meal-arrow" src="\img\angle-circle-arrow-down.svg" />
+          </button>
+        </div>
+        <div class="meal">
+          <button class="meal-button dinner">
+            <div class="meal-img-box">
+              <img class="meal-img" src="\img\dinner.svg" />
+            </div>
+            <h3 class="meal-name">Dinner</h3>
+  
+            <img class="meal-arrow" src="\img\angle-circle-arrow-down.svg" />
+          </button>
+        </div> -->
+        <div
+          class="meal container"
+          onclick="changeBackground(0); changeFoods('breakfast')"
+        >
+          <img class="meal-img" src="\img\breakfast.svg" />
+          <h2>Breakfast</h2>
+          <img class="meal-arrow" src="\img\angle-circle-arrow-down.svg" />
+        </div>
+        <div
+          class="meal container"
+          onclick="changeBackground(1); changeFoods('lunch')"
+        >
+          <img class="meal-img" src="\img\lunch.svg" />
+          <h2>Lunch</h2>
+          <img class="meal-arrow" src="\img\angle-circle-arrow-down.svg" />
+        </div>
+        <div
+          class="meal container"
+          onclick="changeBackground(2); changeFoods('dinner')"
+        >
+          <img class="meal-img" src="\img\dinner.svg" />
+          <h2>Dinner</h2>
+          <img class="meal-arrow" src="\img\angle-circle-arrow-down.svg" />
+        </div>
+      </div>
+
+      <div class="select-item PADDING">
+        <h2>Select Items:</h2>
+      </div>
+
+      <!-- <div class="calculate">
+        <button class="calculate-button">
+          <img class="calculate-img" src="/img/calc.png" />
+        </button>
+      </div> -->
+      <div class="calculate" onclick="handleCalculateClick()">
+        <img src="/img/calculator.png" alt="" />
+      </div>
+
+      <div class="main PADDING">
+        <p id="loading">Loading food ...</p>
+        <div class="breakfast meal-box" style="display: none"></div>
+        <div class="lunch meal-box" style="display: none"></div>
+        <div class="dinner meal-box" style="display: none"></div>
+      </div>
+
+      <div class="calculate-loading container" style="display: none">
+        <div class="lds-spinner">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </main>
+
+    <script id="template-esempio" type="text/html">
+      <div class="food-box" id="{{_id}}">
+        <div class="selected"></div>
+        <img src="{{img}}" alt="" />
+        <div class="col">
+          <div class="food-title">
+            <h1>{{name}}</h1>
+            <p>{{description}}</p>
+          </div>
+          <div class="waterPrint">
+            <h1>{{waterPrint}}</h1>
+            <p>l/Kg</p>
+          </div>
+        </div>
+        <div class="counter">
+          <h1
+            id="decrease"
+            class="disabled"
+            onclick="handleCounterClick('{{_id}}', '{{meal}}', 'decrease')"
+          >
+            -
+          </h1>
+          <h1 id="counter">0</h1>
+          <h1
+            id="increase"
+            onclick="handleCounterClick('{{_id}}', '{{meal}}', 'increase')"
+          >
+            +
+          </h1>
+        </div>
+      </div>
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/calculator.js"></script>
+  </body>
+</html>

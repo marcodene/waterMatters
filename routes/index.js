@@ -10,12 +10,15 @@ router.get("/welcome", forwardAuthenticated, (req, res) => {
   res.render("welcome");
 });
 
-// Main
+// Calculator
 router.get("/", ensureAuthenticated, (req, res) =>
-  res.render("main", {
+  res.render("calculator", {
     user: req.user,
   })
 );
+
+// Main
+router.get("/main", (req, res) => res.render("main"));
 
 // Profile
 router.get("/profile", ensureAuthenticated, (req, res) => {

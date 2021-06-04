@@ -158,9 +158,11 @@ a.share span {
 }
 
 a.profile {
+  position: fixed;
+  bottom: 0;
   margin: 1rem 0;
   background-color: #6356d7;
-  width: 100%;
+  width: 90%;
   height: 36px;
   border-radius: 8px;
   font-weight: 700;
@@ -300,12 +302,6 @@ a.profile {
   height: 100vh;
   background-color: rgba(33, 33, 33, 0.87);
   z-index: 3;
-}
-
-.disable-scroll {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
 }
 
 .share-card {

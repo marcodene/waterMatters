@@ -2,8 +2,6 @@ var template = document.querySelector("#template-esempio").innerHTML;
 const main = document.querySelector(".main");
 const foodBoxes = document.querySelectorAll(".meal-box");
 const $breakfastBox = document.querySelector(".breakfast");
-const body = document.querySelector("body");
-
 const breakfast_button = document.querySelector(".meal-button.breakfast");
 const lunch_button = document.querySelector(".meal button.lunch");
 const dinner_button = document.querySelector(".meal button.dinner");
@@ -141,3 +139,24 @@ const handleCalculateClick = async () => {
     alert("Somethig went wrong. Please refresh the page and try again");
   }
 };
+
+// let menuOpen = false;
+// $menuBtn.addEventListener("click", () => {
+//   if (!menuOpen) {
+//     console.log("open");
+//     $menuBtn.classList.add("open");
+//     $menu.classList.add("growing-animation");
+//     $menu.addEventListener("animationend", () => {
+//       $body.classList.add("disable-scroll");
+//       $menuUl.style.display = "flex";
+//       menuOpen = true;
+//     });
+//   } else {
+//     console.log("close");
+//     $menuBtn.classList.remove("open");
+//     $menu.classList.remove("growing-animation");
+//     $body.classList.remove("disable-scroll");
+//     $menuUl.style.display = "none";
+//     menuOpen = false;
+//   }
+// });

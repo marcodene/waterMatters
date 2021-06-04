@@ -1,0 +1,137 @@
+nav {
+  z-index: 2;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  pointer-events: none;
+}
+
+.menu-btn {
+  z-index: 3;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: auto;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
+.menu-btn__burger,
+.menu-btn__burger::before,
+.menu-btn__burger::after {
+  width: 23px;
+  height: 3px;
+  background: var(--nav-color);
+  border-radius: 50px;
+  transition: all 0.5s ease-in-out;
+}
+
+.menu-btn__burger::before,
+.menu-btn__burger::after {
+  content: "";
+  position: absolute;
+}
+
+.menu-btn__burger::before {
+  transform: translateY(-6px);
+}
+.menu-btn__burger::after {
+  transform: translateY(6px);
+}
+
+/* ANIMATION */
+.menu-btn.open .menu-btn__burger {
+  transform: translateX(-50px);
+  background: transparent;
+  box-shadow: none;
+}
+.menu-btn.open .menu-btn__burger::before {
+  transform: rotate(45deg) translate(35px, -35px);
+}
+.menu-btn.open .menu-btn__burger::after {
+  transform: rotate(-45deg) translate(35px, 35px);
+}
+
+.splash {
+  position: fixed;
+  top: 40px;
+  right: 40px;
+  width: 1px;
+  height: 1px;
+}
+.splash::after {
+  content: "";
+  display: block;
+  position: absolute;
+  border-radius: 50%;
+  background-color: var(--nav-bg);
+  width: 284vmax;
+  height: 284vmax;
+  top: -142vmax;
+  left: -142vmax;
+  transform: scale(0);
+  transform-origin: 50% 50%;
+  transition: transform 0.5s cubic-bezier(0.755, 0.05, 0.855, 0.06);
+  will-change: transform;
+}
+
+.nav:target .splash::after,
+.nav--open .splash::after {
+  transform: scale(1);
+}
+.nav--open li {
+  transform: translateY(0) !important;
+  opacity: 1;
+}
+.nav--open ul {
+  visibility: visible;
+}
+.nav--open {
+  pointer-events: all;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top: -17px;
+  left: 0;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  list-style-type: none;
+  /* visibility: hidden; */
+}
+
+nav ul li {
+  opacity: 0;
+  margin: 0.2rem 0;
+  transition: all 0.3s cubic-bezier(0, 0.995, 0.99, 1) 0.3s;
+}
+
+nav ul a {
+  text-decoration: none;
+  color: var(--nav-color);
+  font-weight: 900;
+}
+
+ul a s {
+  font-weight: 400;
+}
+
+nav ul li:nth-child(1) {
+  transform: translateY(-115px);
+}
+nav ul li:nth-child(2) {
+  transform: translateY(-128px);
+}
+nav ul li:nth-child(3) {
+  transform: translateY(-141px);
+}
+nav ul li:nth-child(4) {
+  transform: translateY(-154px);
+}

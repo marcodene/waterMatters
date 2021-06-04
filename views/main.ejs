@@ -4,169 +4,184 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Food Calculator</title>
-
-    <link rel="stylesheet" href="css/main.css" />
-    <!-- link to the main's css file-->
     <link rel="stylesheet" href="css/default.css" />
-    <!-- general file where all the common propertries/colors are defined -->
-
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href="css/nav.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/responsive/main.css" />
+    <title>WaterMatters</title>
   </head>
   <body>
-    <div class="nav-bar PADDING">
-      <a href="/friends">
-        <img class="icon" src="\img\addFriend 1.png" />
-      </a>
-      <h3 class="user-name"><%= user.username %></h3>
-      <a href="/profile">
-        <img class="icon" src="/img/card-icon.png" />
-      </a>
-    </div>
-    <div class="header PADDING">
-      <h1 class="title">WaterMatters</h1>
-      <p class="sub-title">The best water-print calculator!</p>
-    </div>
-
-    <div class="search-div PADDING" style="display: none">
-      <img class="search-img" src="\img\search.svg" />
-      <form>
-        <input type="text" value="Search for a food" />
-      </form>
-    </div>
-    <div class="select-meal PADDING">
-      <!-- <div class="meal">
-        <button class="meal-button breakfast">
-          <div class="meal-img-box">
-            <img class="meal-img" src="\img\breakfast.svg" />
-          </div>
-
-          <h3 class="meal-name">Breakfast</h3>
-          <img class="meal-arrow" src="\img\angle-circle-arrow-down.svg" />
-        </button>
+    <header>
+      <div class="logo">
+        <img src="img/plastic-bottle.svg" alt="" />
+        <h4>WaterMatters</h4>
       </div>
-      <div class="meal">
-        <button class="meal-button lunch">
-          <div class="meal-img-box">
-            <img class="meal-img" src="\img\lunch.svg" />
-          </div>
 
-          <h3 class="meal-name">Lunch</h3>
-          <img class="meal-arrow" src="\img\angle-circle-arrow-down.svg" />
-        </button>
+      <ul>
+        <li>
+          <a><s>MAIN</s></a>
+        </li>
+        <li><a href="/">CALCULATOR</a></li>
+        <li><a href="/profile">PROFILE</a></li>
+        <li><a href="/friends">FRIENDS</a></li>
+        <li><a href="/contact">CONTACT</a></li>
+      </ul>
+
+      <div class="menu-btn">
+        <div class="menu-btn__burger"></div>
       </div>
-      <div class="meal">
-        <button class="meal-button dinner">
-          <div class="meal-img-box">
-            <img class="meal-img" src="\img\dinner.svg" />
-          </div>
-          <h3 class="meal-name">Dinner</h3>
+      <nav class="nav-bar">
+        <ul class="container">
+          <li>
+            <a><s>MAIN</s></a>
+          </li>
+          <li><a href="/">CALCULATOR</a></li>
+          <li><a href="/profile">PROFILE</a></li>
+          <li><a href="/friends">FRIENDS</a></li>
+        </ul>
 
-          <img class="meal-arrow" src="\img\angle-circle-arrow-down.svg" />
-        </button>
-      </div> -->
-      <div
-        class="meal container"
-        onclick="changeBackground(0); changeFoods('breakfast')"
-      >
-        <img class="meal-img" src="\img\breakfast.svg" />
-        <h2>Breakfast</h2>
-        <img class="meal-arrow" src="\img\angle-circle-arrow-down.svg" />
-      </div>
-      <div
-        class="meal container"
-        onclick="changeBackground(1); changeFoods('lunch')"
-      >
-        <img class="meal-img" src="\img\lunch.svg" />
-        <h2>Lunch</h2>
-        <img class="meal-arrow" src="\img\angle-circle-arrow-down.svg" />
-      </div>
-      <div
-        class="meal container"
-        onclick="changeBackground(2); changeFoods('dinner')"
-      >
-        <img class="meal-img" src="\img\dinner.svg" />
-        <h2>Dinner</h2>
-        <img class="meal-arrow" src="\img\angle-circle-arrow-down.svg" />
-      </div>
-    </div>
+        <div class="splash"></div>
+      </nav>
+    </header>
+    <main>
+      <section>
+        <h1>Meet WaterMatters.</h1>
+        <h4>
+          The best water-footprint <br />
+          calculator.
+        </h4>
 
-    <div class="select-item PADDING">
-      <h2>Select Items:</h2>
-    </div>
-
-    <!-- <div class="calculate">
-      <button class="calculate-button">
-        <img class="calculate-img" src="/img/calc.png" />
-      </button>
-    </div> -->
-    <div class="calculate" onclick="handleCalculateClick()">
-      <img src="/img/calculator.png" alt="" />
-    </div>
-
-    <div class="main PADDING">
-      <p id="loading">Loading food ...</p>
-      <div class="breakfast meal-box" style="display: none"></div>
-      <div class="lunch meal-box" style="display: none"></div>
-      <div class="dinner meal-box" style="display: none"></div>
-    </div>
-
-    <div class="calculate-loading container" style="display: none">
-      <div class="lds-spinner">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-    </div>
-
-    <script id="template-esempio" type="text/html">
-      <div class="food-box" id="{{_id}}">
-        <div class="selected"></div>
-        <img src="{{img}}" alt="" />
-        <div class="col">
-          <div class="food-title">
-            <h1>{{name}}</h1>
-            <p>{{description}}</p>
-          </div>
-          <div class="waterPrint">
-            <h1>{{waterPrint}}</h1>
-            <p>l/Kg</p>
-          </div>
+        <div class="button-box">
+          <a class="container" href="/welcome"><h4>GET STARTED NOW</h4></a>
+          <a class="container" href="#scroll-to"><h4>SEE MORE</h4></a>
         </div>
-        <div class="counter">
-          <h1
-            id="decrease"
-            class="disabled"
-            onclick="handleCounterClick('{{_id}}', '{{meal}}', 'decrease')"
-          >
-            -
-          </h1>
-          <h1 id="counter">0</h1>
-          <h1
-            id="increase"
-            onclick="handleCounterClick('{{_id}}', '{{meal}}', 'increase')"
-          >
-            +
-          </h1>
+        <div class="phone-box">
+          <img
+            class="iphone"
+            id="iphone-welcome"
+            src="img/iphone-welcome.png"
+            alt=""
+          />
         </div>
-      </div>
-    </script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="/js/main.js"></script>
+        <div class="circle-shadow" id="one"></div>
+        <div class="circle-shadow" id="two"></div>
+        <div class="circle-shadow" id="three"></div>
+      </section>
+      <section id="scroll-to">
+        <span>
+          <span>
+            <h1>What is water-footprint?</h1>
+            <p>
+              A water footprint shows the extent of water use in relation to
+              consumption by people. The water footprint of an individual is
+              defined as the total volume of
+              <b class="bold">fresh water used to produce the goods</b> and
+              services consumed by the individual him/herself. Water use is
+              measured in water volume consumed (evaporated) and/or polluted per
+              kilograms of a certain food produced. Thanks to this indicator you
+              will be aware of the exact amount of water you are consuming with
+              each and every meal you have, because remember:
+              <b class="bold">awareness is the first step towards change!</b>
+            </p>
+          </span>
+          <img
+            class="iphone"
+            id="iphone-calculator"
+            src="img/iphone-calculator.png"
+            alt=""
+          />
+        </span>
+        <div class="connector"></div>
+      </section>
+      <section>
+        <h1>Use WaterMatters</h1>
+        <span>
+          <div class="box">
+            <h3>Select foods of your daily meals</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
+              sit amet ex nunc. Maecenas non dictum sapien. Lorem ipsum dolor
+              sit amet, consectetur adipiscing elit.
+            </p>
+            <div>
+              <img class="iphone-mockup" src="img/iphone-mockup.svg" alt="" />
+              <div class="container full-width food-box" id="one">
+                <img src="img/food-box-1.svg" alt="" />
+                <img src="img/food-box-2.svg" alt="" />
+              </div>
+            </div>
+          </div>
+          <div class="box">
+            <h3>View your meal’s water-print</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
+              sit amet ex nunc. Maecenas non dictum sapien. Lorem ipsum dolor
+              sit amet, consectetur adipiscing elit.
+            </p>
+            <div>
+              <img class="iphone-mockup" src="img/iphone-mockup.svg" alt="" />
+              <div class="container full-width food-box" id="two">
+                <img src="img/stats-card-1.svg" alt="" />
+                <img src="img/stats-card-2.svg" alt="" />
+                <img src="img/stats-card-3.svg" alt="" />
+              </div>
+            </div>
+          </div>
+          <div class="box">
+            <h3>Share your card with friends</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
+              sit amet ex nunc. Maecenas non dictum sapien. Lorem ipsum dolor
+              sit amet, consectetur adipiscing elit.
+            </p>
+            <div>
+              <img class="iphone-mockup" src="img/iphone-mockup.svg" alt="" />
+              <div class="container full-width food-box" id="three">
+                <img src="img/profile-card-1.svg" alt="" />
+                <img src="img/profile-card-2.svg" alt="" />
+              </div>
+            </div>
+          </div>
+        </span>
+      </section>
+      <section>
+        <span>
+          <h1>Understand data</h1>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sit
+            amet ex nunc. Maecenas non dictum sapien. Duis eget velit
+            condimentum, ornare mi sed, aliquam elit. Integer vel mauris
+            eleifend, sagittis sapien ut, dapibus dolor. Donec malesuada
+            imperdiet nibh eget ullamcorper. Vivamus volutpat, purus a
+            ullamcorper dignissim, diam erat blandit diam, non venenatis metus
+            odio sed urna. Aliquam erat volutpat.
+          </p>
+        </span>
+        <img
+          src="img/iphone-profile.svg"
+          alt=""
+          class="iphone"
+          id="iphone-profile"
+        />
+      </section>
+      <section>
+        <div>
+          <span>
+            <h1>Watch your friends</h1>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
+              sit amet ex nunc. Maecenas non dictum sapien. Duis eget velit
+              condimentum, ornare mi sed, aliquam elit. Integer vel mauris
+              eleifend, sagittis sapien ut, dapibus dolor
+            </p>
+          </span>
+          <img src="img/friends-card.svg" alt="" id="friends-card" />
+        </div>
+      </section>
+    </main>
+
+    <footer></footer>
+    <script src="js/nav.js"></script>
   </body>
 </html>
