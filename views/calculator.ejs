@@ -20,10 +20,25 @@
   </head>
   <body>
     <header class="nav-bar" role="navigation">
+      <div class="logo">
+        <img class="" src="img/plastic-bottle.svg" alt="" />
+        <h4>WaterMatters</h4>
+      </div>
+
+      <h3 class="user-name"><%= user.username %></h3>
+
+      <ul>
+        <li><a href="/main">MAIN</a></li>
+        <li>
+          <a><s>CALCULATOR</s></a>
+        </li>
+        <li><a href="/profile">PROFILE</a></li>
+        <li><a href="/friends">FRIENDS</a></li>
+        <li><a href="/contact">CONTACT</a></li>
+      </ul>
       <!-- <a href="/friends">
         <img class="icon" src="\img\addFriend 1.png" />
       </a> -->
-      <h3 class="user-name"><%= user.username %></h3>
       <!-- <a href="/profile">
         <img class="icon" src="/img/card-icon.png" />
       </a> -->
@@ -38,6 +53,7 @@
           </li>
           <li><a href="/profile">PROFILE</a></li>
           <li><a href="/friends">FRIENDS</a></li>
+          <li><a href="/contact">CONTACT</a></li>
         </ul>
 
         <div class="splash"></div>
@@ -46,7 +62,7 @@
     <main>
       <div class="header PADDING">
         <h1 class="title">WaterMatters</h1>
-        <p class="sub-title">The best water-print calculator!</p>
+        <p class="sub-title">The best water-footprint calculator!</p>
       </div>
 
       <div class="search-div PADDING" style="display: none">
@@ -122,10 +138,11 @@
         </button>
       </div> -->
       <div class="calculate" onclick="handleCalculateClick()">
+        <h1>CALCULATE</h1>
         <img src="/img/calculator.png" alt="" />
       </div>
 
-      <div class="main PADDING">
+      <div class="main PADDING container">
         <p id="loading">Loading food ...</p>
         <div class="breakfast meal-box" style="display: none"></div>
         <div class="lunch meal-box" style="display: none"></div>

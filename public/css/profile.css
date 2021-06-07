@@ -36,7 +36,7 @@ body {
 }
 
 .btn-bar {
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   margin-bottom: 17vh;
@@ -56,7 +56,7 @@ body {
 
 .background {
   min-height: 80vh;
-  width: 100vw;
+  width: 100%;
   background-color: var(--white);
   border-radius: 26px 26px 0 0;
 }
@@ -67,7 +67,8 @@ body {
   position: absolute;
   transform: translateY(-50%);
   color: var(--white);
-  width: 350px;
+  width: 95vw;
+  max-width: 350px;
   height: 190px;
   right: 0;
   left: 0;
@@ -78,7 +79,8 @@ body {
 .card > .front,
 .card > .back {
   box-sizing: border-box;
-  width: 350px;
+  width: 95vw;
+  max-width: 350px;
   height: 190px;
   border-radius: 13px;
   padding: 17px;
@@ -135,7 +137,7 @@ body {
 
 .main {
   position: relative;
-  padding: 7rem 3rem 0 3rem;
+  padding: 7rem 3rem 4rem 3rem;
 }
 
 .main a {
@@ -143,6 +145,7 @@ body {
 }
 
 a.share {
+  cursor: pointer;
   margin: 1rem 0;
   background-color: var(--color3);
   width: 55%;
@@ -234,6 +237,7 @@ a.profile {
 
 .stats-grid span {
   float: right;
+  align-items: flex-end;
 }
 
 .stats-grid img {
@@ -319,6 +323,7 @@ a.profile {
 }
 
 .close {
+  cursor: pointer;
   position: absolute;
   top: 17px;
   right: 10px;
@@ -381,4 +386,38 @@ a.profile {
 
 .copied {
   background-color: #4cb963;
+}
+
+@media only screen and (min-width: 767px) {
+  .main {
+    padding-left: 7rem;
+    padding-right: 7rem;
+  }
+  .stats-grid {
+    grid-template-columns: 85% 5% 10%;
+  }
+}
+
+@media only screen and (min-width: 1023px) {
+  .main {
+    padding-left: 12rem;
+    padding-right: 12rem;
+  }
+  .stats-grid {
+    grid-template-columns: 85% 5% 10%;
+  }
+}
+
+@media only screen and (min-width: 1439px) {
+  .main {
+    padding-left: 21rem;
+    padding-right: 21rem;
+  }
+}
+
+@media only screen and (min-width: 2559px) {
+  .main {
+    padding-left: 51rem;
+    padding-right: 51rem;
+  }
 }

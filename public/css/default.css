@@ -29,3 +29,8 @@ body {
   height: 100%;
   overflow: hidden;
 }
+
+.white-svg {
+  filter: invert(100%) sepia(41%) saturate(1606%) hue-rotate(161deg)
+    brightness(126%) contrast(106%);
+}

@@ -1,6 +1,7 @@
 :root {
   --nav-color: #fff;
   --nav-bg: #242424;
+  --text: var(--white);
 }
 
 * {
@@ -17,34 +18,8 @@ body {
   position: relative;
 }
 
-header {
-  position: absolute;
-  padding: 10px;
-  width: 100%;
-  padding-left: 1.5rem;
-}
-
 .logo {
-  display: flex;
-  align-items: center;
   color: var(--white);
-}
-
-.logo img {
-  filter: invert(100%) sepia(41%) saturate(1606%) hue-rotate(161deg)
-    brightness(126%) contrast(106%);
-  height: 28px;
-  margin-right: 8px;
-}
-
-header > ul {
-  display: none;
-}
-
-section {
-  width: 100%;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
 }
 
 /* SECTION 1 */
@@ -215,13 +190,13 @@ section:nth-child(5) > div h1 {
   font-size: 1.3rem;
 }
 
-.box:nth-child(2) > h3 {
+.box:nth-child(1) > h3 {
   color: #7a557c;
 }
-.box:nth-child(3) > h3 {
+.box:nth-child(2) > h3 {
   color: #507c65;
 }
-.box:nth-child(4) > h3 {
+.box:nth-child(3) > h3 {
   color: #04395e;
 }
 

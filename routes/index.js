@@ -20,6 +20,9 @@ router.get("/", ensureAuthenticated, (req, res) =>
 // Main
 router.get("/main", (req, res) => res.render("main"));
 
+// Contact
+router.get("/contact", (req, res) => res.render("contact"));
+
 // Profile
 router.get("/profile", ensureAuthenticated, (req, res) => {
   res.render("profile", {

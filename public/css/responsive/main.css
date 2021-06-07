@@ -33,48 +33,6 @@
 }
 
 @media only screen and (min-width: 1023px) {
-  .menu-btn {
-    display: none;
-  }
-
-  .logo {
-    position: absolute;
-    left: 1.5rem;
-  }
-
-  .logo img {
-    height: 37px;
-  }
-
-  .logo h4 {
-    font-size: 1.2rem;
-    position: relative;
-  }
-
-  header {
-    z-index: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-  }
-
-  header > ul {
-    display: flex;
-    list-style: none;
-  }
-
-  header > ul > li {
-    margin: 0 1rem;
-    font-size: 0.7rem;
-    font-weight: bold;
-  }
-
-  header ul li a {
-    text-decoration: none;
-    color: var(--white);
-  }
-
   section:nth-child(1) {
     position: relative;
     padding-bottom: 12rem;

@@ -1,3 +1,30 @@
+header {
+  position: absolute;
+  padding: 10px;
+  width: 100%;
+  padding-left: 1.5rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 28px;
+  margin-right: 8px;
+}
+
+header > ul {
+  display: none;
+}
+
+section {
+  width: 100%;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
 nav {
   z-index: 2;
   width: 100vw;
@@ -134,4 +161,51 @@ nav ul li:nth-child(3) {
 }
 nav ul li:nth-child(4) {
   transform: translateY(-154px);
+}
+nav ul li:nth-child(5) {
+  transform: translateY(-154px);
+}
+
+@media only screen and (min-width: 1023px) {
+  .logo {
+    position: absolute;
+    left: 1.5rem;
+  }
+
+  .logo img {
+    height: 37px;
+  }
+
+  .logo h4 {
+    font-size: 1.2rem;
+    position: relative;
+  }
+
+  .menu-btn {
+    display: none;
+  }
+
+  header {
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+
+  header > ul {
+    display: flex;
+    list-style: none;
+  }
+
+  header > ul > li {
+    margin: 0 1rem;
+    font-size: 0.7rem;
+    font-weight: bold;
+  }
+
+  header ul li a {
+    text-decoration: none;
+    color: var(--text);
+  }
 }

@@ -83,6 +83,25 @@
   margin-top: 5px;
 }
 
+.profile-link {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 300px;
+  width: 80%;
+  max-width: 289px;
+  height: 2rem;
+  border-radius: 7px;
+  box-shadow: 0px 1px 8px rgb(0 0 0 / 15%);
+}
+
+.profile-link a {
+  color: var(--black);
+  text-decoration: none;
+  text-align: center;
+}
+
 .button-box {
   display: none;
   position: fixed;
@@ -164,4 +183,31 @@
 #search-friend-card {
   background-color: #c4c4c4;
   filter: none;
+}
+
+/* @media only screen and (min-width: 767px) {
+  .nav-bar {
+    padding: 0 6rem;
+    padding-top: 3rem;
+  }
+}
+
+@media only screen and (min-width: 1023px) {
+  .nav-bar {
+    padding: 0 16rem;
+    padding-top: 3rem;
+  }
+}
+
+@media only screen and (min-width: 1439px) {
+  .nav-bar {
+    padding: 0 28rem;
+    padding-top: 3rem;
+  }
+} */
+@media only screen and (min-width: 767px) {
+  .nav-bar {
+    padding: 0 30%;
+    padding-top: 3rem;
+  }
 }

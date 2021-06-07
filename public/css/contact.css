@@ -1,0 +1,52 @@
+:root {
+  --nav-color: var(--black);
+  --nav-bg: var(--color3);
+  --text: var(--black);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.logo {
+  color: var(--black);
+}
+
+main {
+  width: 100vw;
+  height: 100vh;
+}
+
+main h1 {
+  font-size: 1.4rem;
+}
+
+.copied {
+  color: #4cb963;
+}
+
+@media only screen and (min-width: 767px) {
+  main h1 {
+    font-size: 3rem;
+  }
+}
+
+@media only screen and (min-width: 1023px) {
+  main h1 {
+    font-size: 4rem;
+  }
+}
+
+@media only screen and (min-width: 1439px) {
+  main h1 {
+    font-size: 5rem;
+  }
+}
+
+@media only screen and (min-width: 2559px) {
+  main h1 {
+    font-size: 8rem;
+  }
+}

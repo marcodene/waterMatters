@@ -19,6 +19,7 @@ const $usernameSearchCard = document.querySelector(
 const $waterPrintSearchCard = document.querySelector(
   "#search-friend-card > .water-print"
 );
+const $profileLink = document.querySelector(".profile-link");
 
 const colors = [
   "#031D44",
@@ -59,6 +60,17 @@ friendCards.forEach((card) => {
     $navBar.style.display = "none";
     $title.style.display = "none";
     zoomInImgs.forEach((img) => (img.style.display = "none"));
+
+    $profileLink.style.display = "flex";
+    // Set href to the unique profile page
+    const username = card.querySelector("h3").innerText;
+    console.log(username);
+    const friend = user.friends.filter(
+      (friend) => friend.username === username
+    );
+    $profileLink.querySelector(
+      "a"
+    ).href = `http://localhost:3000/profile/${friend[0]._id}`;
 
     $buttonBox.style.display = "block";
     $actionButton.classList.add("remove");

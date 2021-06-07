@@ -42,7 +42,7 @@ const loadFood = async (meal) => {
 loadFood("breakfast");
 loadFood("lunch");
 loadFood("dinner");
-$breakfastBox.style.display = "block";
+$breakfastBox.style.display = "grid";
 
 const changeBackground = (itemIndex) => {
   for (item of meals) {
@@ -65,7 +65,7 @@ const changeFoods = async (meal) => {
   for (let box of foodBoxes) {
     box.style.display = "none";
   }
-  $mealBox.style.display = "block";
+  $mealBox.style.display = "grid";
 };
 
 const foodSelected = [];

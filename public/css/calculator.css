@@ -1,6 +1,7 @@
 :root {
   --nav-color: var(--black);
   --nav-bg: var(--color3);
+  --text: var(--black);
 }
 
 html {
@@ -32,6 +33,10 @@ button {
   padding-right: 1.5em;
 }
 
+.logo {
+  display: none;
+}
+
 .user-name {
   font-size: 14px;
   font-weight: 700;
@@ -48,6 +53,10 @@ button {
   justify-content: center;
   box-shadow: 0px 4px 15px rgb(38, 38, 38, 0.2);
   border-radius: 0px 0px 10px 10px;
+}
+
+main {
+  margin-bottom: 7rem;
 }
 
 .title {
@@ -163,6 +172,7 @@ input {
 } */
 
 .meal {
+  cursor: pointer;
   padding: 10px;
   margin: 0 10px;
   background-color: white;
@@ -215,6 +225,7 @@ input {
 } */
 
 .calculate {
+  cursor: pointer;
   position: fixed;
   right: 1.7rem;
   bottom: 2rem;
@@ -222,6 +233,10 @@ input {
   background-color: var(--color3);
   padding: 33px;
   z-index: 1;
+}
+
+.calculate h1 {
+  display: none;
 }
 
 .calculate img {
@@ -350,7 +365,7 @@ input {
   border-radius: 17px;
   box-sizing: border-box;
   padding: 8px;
-  margin: 1.5rem 0;
+  margin-top: 1.5rem;
   display: flex;
 }
 
@@ -418,12 +433,18 @@ input {
   top: 2px;
 }
 
+#increase,
+#decrease {
+  cursor: pointer;
+}
+
 .disabled {
   opacity: 40%;
 }
 
 .selected {
   width: 323px;
+  height: 100%;
   min-height: 117px;
   background: var(--color3);
   border-radius: 17px;
@@ -524,3 +545,172 @@ input {
   }
 }
 /* finish loading animation*/
+
+@media only screen and (min-width: 1023px) {
+  /* .nav-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    box-sizing: border-box;
+    flex-direction: column;
+  }
+
+  .logo {
+    display: flex;
+    top: 0;
+  }
+
+  .logo h4 {
+    font-weight: 700;
+  }
+
+  header > ul {
+    flex-direction: column;
+  }
+
+  main {
+    padding-left: 15vw;
+  }
+
+  .title {
+    display: none;
+  }
+
+  .sub-title {
+    width: 75%;
+    font-size: 53px;
+    font-weight: 600;
+  } */
+
+  .logo {
+    display: flex;
+  }
+
+  .user-name {
+    display: none;
+  }
+
+  .title {
+    display: none;
+  }
+
+  .sub-title {
+    width: 75%;
+    font-size: 53px;
+    font-weight: 600;
+  }
+
+  .meal {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 30%;
+    max-width: 400px;
+    padding-right: 1rem;
+  }
+
+  .meal h2 {
+    font-size: 20px;
+    font-weight: 900;
+  }
+
+  .meal-box {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-row-gap: 70px;
+    margin-top: 5rem;
+  }
+
+  .food-box {
+    padding-top: 5rem;
+  }
+
+  .food-box,
+  .selected {
+    width: 260px;
+  }
+
+  .food-box img {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150px;
+  }
+
+  .food-title h1 {
+    font-size: 1.6rem;
+  }
+
+  .food-title p {
+    font-size: 1.1rem;
+    padding-top: 0.2rem;
+    padding-bottom: 0.9rem;
+  }
+
+  .counter > * {
+    width: 14px;
+  }
+
+  .counter > h1:nth-child(2) {
+    font-size: 1.3rem;
+    top: -1px;
+  }
+
+  .calculate {
+    padding: 0 23px 0 63px;
+    border-radius: 60px;
+  }
+
+  .calculate h1 {
+    display: block;
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+
+  .calculate img {
+    left: 23px;
+    transform: translate(0, -50%);
+  }
+}
+
+@media only screen and (min-width: 1279px) {
+  .meal-box {
+    grid-template-columns: auto auto auto auto;
+  }
+}
+
+@media only screen and (min-width: 1679px) {
+  .meal-box {
+    grid-template-columns: auto auto auto auto auto;
+  }
+}
+
+@media only screen and (min-width: 1919px) {
+  .meal-box {
+    grid-template-columns: auto auto auto auto auto auto;
+  }
+
+  .meal {
+    margin: 0 3rem;
+  }
+}
+
+@media only screen and (min-width: 2559px) {
+  .meal-box {
+    grid-template-columns: auto auto auto auto auto auto auto;
+  }
+}
+
+@media only screen and (min-width: 3000px) {
+  .meal-box {
+    grid-template-columns: auto auto auto auto auto auto auto auto;
+  }
+}
+
+@media only screen and (min-width: 3439px) {
+  .meal-box {
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+  }
+}
