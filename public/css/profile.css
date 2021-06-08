@@ -1,3 +1,6 @@
+.back {
+  display: none !important;
+}
 .rotate-card {
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
@@ -6,7 +9,7 @@
 .front,
 .back {
   position: absolute;
-  -webkit-backface-visibility: visible; /* Safari */
+  -webkit-backface-visibility: visible;
   backface-visibility: hidden;
 }
 
@@ -18,13 +21,13 @@
   transform: perspective(600px) rotateY(180deg);
 }
 
-.rotate-card:hover > .front {
+/* .rotate-card:hover > .front {
   transform: perspective(600px) rotateY(-180deg);
 }
 
 .rotate-card:hover > .back {
   transform: perspective(600px) rotateY(0deg);
-}
+} */
 
 * {
   padding: 0;
