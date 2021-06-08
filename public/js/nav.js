@@ -14,6 +14,7 @@ $menuBtn.addEventListener("click", () => {
   //   // $menuBtn.classList.remove("open");
   //   $menuUl.style.display = "none";
   // }
+  window.scrollTo(0, 0);
   $menuUl.style.hidden = !menuOpen;
   $navBar.classList.toggle("nav--open");
   $body.classList.toggle("disable-scroll");
