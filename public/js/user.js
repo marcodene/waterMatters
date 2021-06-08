@@ -6,7 +6,7 @@ const updateUser = async () => {
   try {
     const response = await axios({
       method: "patch",
-      url: "http://localhost:3000/users/edit",
+      url: `${url}/users/edit`,
       data: {
         username: `${username}`,
       },

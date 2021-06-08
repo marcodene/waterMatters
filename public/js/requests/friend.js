@@ -10,9 +10,7 @@ const searchFriend = async () => {
   $friendFoundBox.innerHTML = "";
 
   try {
-    const response = await axios.get(
-      `http://localhost:3000/users/friend/${username}`
-    );
+    const response = await axios.get(`${url}/users/friend/${username}`);
 
     $friendFoundBox.innerHTML = `<h5>${response.data.username}</h5>`;
   } catch (e) {
@@ -29,9 +27,7 @@ const addFriend = async () => {
   $friendFoundBox.innerHTML = "";
 
   try {
-    const response = await axios.post(
-      `http://localhost:3000/users/friend/${username}`
-    );
+    const response = await axios.post(`${url}/users/friend/${username}`);
 
     $friendFoundBox.innerHTML = `<h5>${response.data.friend.username}</h5>`;
   } catch (e) {
@@ -52,9 +48,7 @@ const removeFriend = async () => {
   $friendFoundBox.innerHTML = "";
 
   try {
-    const response = await axios.delete(
-      `http://localhost:3000/users/friend/${username}`
-    );
+    const response = await axios.delete(`${url}/users/friend/${username}`);
 
     $friendFoundBox.innerHTML = `<h5>${response.data}</h5>`;
   } catch (e) {
@@ -68,7 +62,7 @@ const removeFriend = async () => {
 
 const addMeal = async () => {
   try {
-    const response = await axios.post(`http://localhost:3000/users/history`, [
+    const response = await axios.post(`${url}/users/history`, [
       {
         foodId: "60759e5a5ac9172ee2617c42",
         portions: 3,
@@ -83,6 +77,6 @@ const addMeal = async () => {
 
 const getWaterPrint = async () => {
   try {
-    const response = await axios.get("http://localhost:3000/users/water-print");
+    const response = await axios.get(`${url}/users/water-print`);
   } catch (e) {}
 };

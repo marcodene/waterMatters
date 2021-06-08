@@ -5,8 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href="http://localhost:3000/css/profile.css" />
-    <link rel="stylesheet" href="http://localhost:3000/css/default.css" />
+    <base href="/">
+    <link rel="stylesheet" href="css/profile.css" />
+    <link rel="stylesheet" href="css/default.css" />
     <title>PROFILE</title>
   </head>
   <body>
@@ -28,7 +29,7 @@
         <div class="back">  
           
         <!-- <img src="/img/qr-code.png" alt="" class="qr-code"> -->
-        <img src="https://api.qrserver.com/v1/create-qr-code/?data=http://localhost:3000/profile/<%= user._id %>&size=170x170&bgcolor=242424&color=fff" alt="" class="qr-code">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?data=<%= url %>/profile/<%= user._id %>&size=170x170&bgcolor=242424&color=fff" alt="" class="qr-code">
         <span class="logo">
           <img src="img/plastic-bottle-white.png" alt="logo" />
           <h4>WaterMatters</h4>
@@ -312,17 +313,17 @@
         <div class="close container" onclick="handleCloseShareClick()">
           <img src="img/close.svg" alt="">
         </div>
-        <img src="https://api.qrserver.com/v1/create-qr-code/?data=http://localhost:3000/profile/<%= user._id %>&size=170x170&bgcolor=fff&color=242424" alt="">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?data=<%= url %> /profile/<%= user._id %>&size=170x170&bgcolor=fff&color=242424" alt="">
         <h3>Page Link</h3>
         <div class="link-box" onclick="handleCopy()">
           <div>
-            <h3 id="text-to-copy">http://localhost:3000/profile/<%= user._id %></h3>
+            <h3 id="text-to-copy"><%= url %>/profile/<%= user._id %></h3>
           </div>
           <img src="/img/copy-link.svg" alt="">
         </div>
       </div>
     </div>
 
-    <script src="http://localhost:3000/js/profile.js"></script>
+    <script src="js/profile.js"></script>
   </body>
 </html>

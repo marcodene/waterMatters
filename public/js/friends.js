@@ -38,7 +38,7 @@ for (i = 0; i < friendCards.length; i++) {
 }
 // Setting friend's waterPrint
 (async () => {
-  const response = await axios.get("http://localhost:3000/users/friends");
+  const response = await axios.get(`${url}/users/friends`);
 
   response.data.forEach((waterPrint, index) => {
     waterPrintItem[index].innerText = `${waterPrint} L`;
@@ -68,9 +68,7 @@ friendCards.forEach((card) => {
     const friend = user.friends.filter(
       (friend) => friend.username === username
     );
-    $profileLink.querySelector(
-      "a"
-    ).href = `http://localhost:3000/profile/${friend[0]._id}`;
+    $profileLink.querySelector("a").href = `${url}/profile/${friend[0]._id}`;
 
     $buttonBox.style.display = "block";
     $actionButton.classList.add("remove");
@@ -106,9 +104,7 @@ const handleRemoveClick = async () => {
   const username = card.innerHTML.match(regex)[1];
   const id = user.friends.find((user) => user.username === username)._id;
 
-  const response = await axios.delete(
-    `http://localhost:3000/users/friend/${id}`
-  );
+  const response = await axios.delete(`${url}/users/friend/${id}`);
   window.location.reload();
 };
 
@@ -129,7 +125,7 @@ const handleAddClick = async () => {
     }
 
     const response = await axios.post(
-      `http://localhost:3000/users/friend/${friendSearched._id}`
+      `${url}/users/friend/${friendSearched._id}`
     );
     alert("Friend successfully added!");
     window.location.reload();
@@ -182,9 +178,7 @@ $searchForm.addEventListener("submit", async (event) => {
     const username = $input.value;
 
     searchingFriend();
-    const response = await axios.get(
-      `http://localhost:3000/users/friend/${username}`
-    );
+    const response = await axios.get(`${url}/users/friend/${username}`);
 
     friendSearched = response.data;
 

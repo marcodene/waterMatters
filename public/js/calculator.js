@@ -13,7 +13,7 @@ const loadFood = async (meal) => {
   const $mealBox = document.querySelector(`.${meal}`);
   try {
     const response = await axios.get(
-      `http://localhost:3000/api/foods/${meal === "breakfast" ? meal : "lunch"}`
+      `${url}/api/foods/${meal === "breakfast" ? meal : "lunch"}`
     );
     var foods = response.data;
 
@@ -129,12 +129,9 @@ const handleCalculateClick = async () => {
   $calculateLoading.style.display = "flex";
 
   try {
-    const response = await axios.post(
-      "http://localhost:3000/users/history",
-      foodSelected
-    );
+    const response = await axios.post(`${url}/users/history`, foodSelected);
     console.log(response);
-    window.location = "http://localhost:3000/result";
+    window.location = `${url}/result`;
   } catch (e) {
     alert("Somethig went wrong. Please refresh the page and try again");
   }

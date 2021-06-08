@@ -14,6 +14,7 @@ router.get("/welcome", forwardAuthenticated, (req, res) => {
 router.get("/", ensureAuthenticated, (req, res) =>
   res.render("calculator", {
     user: req.user,
+    url: process.env.url,
   })
 );
 
@@ -28,6 +29,7 @@ router.get("/profile", ensureAuthenticated, (req, res) => {
   res.render("profile", {
     mode: "profile",
     user: req.user,
+    url: process.env.url,
   });
 });
 
@@ -36,6 +38,7 @@ router.get("/result", ensureAuthenticated, (req, res) => {
   res.render("profile", {
     mode: "result",
     user: req.user,
+    url: process.env.url,
   });
 });
 
@@ -56,6 +59,7 @@ router.get("/profile/:id", async (req, res) => {
   res.render("profile", {
     mode: "id",
     user: validatedUser,
+    url: process.env.url,
   });
 });
 
@@ -63,6 +67,7 @@ router.get("/profile/:id", async (req, res) => {
 router.get("/friends", ensureAuthenticated, (req, res) => {
   res.render("friends", {
     user: req.user,
+    url: process.env.url,
     // user: {
     //   _id: { $oid: "6076fae7b8a267402f2b67a0" },
     //   waterPrint: { $numberInt: "0" },

@@ -284,7 +284,7 @@ router.post("/history", async (req, res) => {
     // Check if the ids provided exist in the food database, otherwise a 404 Error will be thrown
     await axios({
       method: "get",
-      url: `http://localhost:3000/api/food`,
+      url: `${process.env.url}/api/food`,
       data: req.body,
     });
 
@@ -303,7 +303,7 @@ router.post("/history", async (req, res) => {
 
       // Updating the user's waterPrint value
       const response = await axios.get(
-        `http://localhost:3000/api/food/${foodToAdd.foodId}`
+        `${process.env.url}/api/food/${foodToAdd.foodId}`
       );
       await User.findOneAndUpdate(
         { _id: user._id },

@@ -36,7 +36,7 @@ module.exports = function (passport) {
       {
         clientID: process.env.googleID,
         clientSecret: process.env.googleSecret,
-        callbackURL: "http://localhost:3000/google/callback",
+        callbackURL: `${process.env.url}/google/callback`,
       },
       function (accessToken, refreshToken, profile, done) {
         User.findOrCreate(
@@ -58,7 +58,7 @@ module.exports = function (passport) {
       {
         clientID: process.env.facebookID,
         clientSecret: process.env.facebookSecret,
-        callbackURL: "http://localhost:3000/facebook/callback",
+        callbackURL: `${process.env.url}/facebook/callback`,
       },
       function (accessToken, refreshToken, profile, done) {
         User.findOrCreate(
