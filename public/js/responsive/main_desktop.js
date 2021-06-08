@@ -1,3 +1,17 @@
+import data from "/public/js/db.js";
+var template = document.querySelector("#template-esempio").innerHTML;
+const main = document.querySelector(".main");
+
+
+let i;
+for (i = 0; i < data.length; i++) {
+  var html = Mustache.render(template, data[i]);
+
+  main.insertAdjacentHTML("beforeend", html);
+}
+
+
+
 const body = document.querySelector("body")
 
 const breakfast_button = document.querySelector(".meal-button.breakfast")
