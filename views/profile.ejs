@@ -8,12 +8,42 @@
     <link rel="icon" href="img/plastic-bottle.svg" />
     <link rel="stylesheet" href="<%= url %>/css/profile.css" />
     <link rel="stylesheet" href="<%= url %>/css/default.css" />
+    <link rel="stylesheet" href="css/nav.css" />
     <title>PROFILE</title>
   </head>
   <body>
     <base href="/">
+    <header>
+      <div class="logo">
+        <img class="white-svg" src="img/plastic-bottle.svg" alt="" />
+        <h4>WaterMatters</h4>
+      </div>
+
+      <ul>
+        <li><a href="/main">MAIN</a></li>
+        <li><a href="/">CALCULATOR</a></li>
+        <li><a><s>PROFILE</s></a></li>
+        <li><a href="/friends">FRIENDS</a></li>
+        <li><a href="/contact">CONTACT</a></li>
+      </ul>
+
+      <div class="menu-btn">
+        <div class="menu-btn__burger"></div>
+      </div>
+      <nav class="nav-bar">
+        <ul class="container">
+          <li><a href="/main">MAIN</a></li>
+          <li><a href="/">CALCULATOR</a></li>
+          <li><a><s>PROFILE</s></a></li>
+          <li><a href="/friends">FRIENDS</a></li>
+          <li><a href="/contact">CONTACT</a></li>
+        </ul>
+
+        <div class="splash"></div>
+      </nav>
+    </header>
     <div class="btn-bar">
-      <a href="/"><img class="icon-bar" id="back-arrow" src="img/back-arrow.svg" alt=""></a>
+      <!-- <a href="/"><img class="icon-bar" id="back-arrow" src="img/back-arrow.svg" alt=""></a> -->
     </div>
     <div class="background"> 
       <div class="card rotate-card">
@@ -324,6 +354,7 @@
       </div>
     </div>
 
+    <script src="js/nav.js"></script>
     <script src="js/profile.js"></script>
   </body>
 </html>

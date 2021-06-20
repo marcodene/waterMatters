@@ -7,17 +7,54 @@
     <link rel="icon" href="img/plastic-bottle.svg" />
     <link rel="stylesheet" href="css/friends.css" />
     <link rel="stylesheet" href="css/default.css" />
+    <link rel="stylesheet" href="css/nav.css" />
     <title>Document</title>
   </head>
   <body>
-    <div class="full-width nav-bar">
+    <header>
+      <div class="logo">
+        <img src="img/plastic-bottle.svg" alt="" />
+        <h4>WaterMatters</h4>
+      </div>
+
+      <ul>
+        <li><a href="/main">MAIN</a></li>
+        <li><a href="/">CALCULATOR</a></li>
+        <li><a href="/profile">PROFILE</a></li>
+        <li>
+          <a><s>FRIENDS</s></a>
+        </li>
+        <li><a href="/contact">CONTACT</a></li>
+      </ul>
+
+      <div class="menu-btn">
+        <div class="menu-btn__burger"></div>
+      </div>
+      <nav class="nav-bar">
+        <ul class="container">
+          <li><a href="/main">MAIN</a></li>
+          <li><a href="/">CALCULATOR</a></li>
+          <li><a href="/profile">PROFILE</a></li>
+          <li>
+            <a><s>FRIENDS</s></a>
+          </li>
+          <li><a href="/contact">CONTACT</a></li>
+        </ul>
+
+        <div class="splash"></div>
+      </nav>
+    </header>
+    <!-- <div class="full-width nav-bar">
       <a href="/">
         <img src="img/line-angle-left.svg" alt="back arrow" />
       </a>
       <img id="add-button" src="img/add-friend.svg" alt="add friend" />
-    </div>
+    </div> -->
 
-    <h1 class="full-width title">FRIENDS</h1>
+    <div class="full-width title">
+      <h1>FRIENDS</h1>
+      <img id="add-button" src="img/add-friend.svg" alt="add friend" />
+    </div>
     <div class="container">
       <div id="card-box">
         <% for( let friend of user.friends ) { %>
@@ -68,5 +105,6 @@
       const url = <%- JSON.stringify(url) %>;
     </script>
     <script src="js/friends.js"></script>
+    <script src="js/nav.js"></script>
   </body>
 </html>

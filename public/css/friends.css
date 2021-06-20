@@ -1,3 +1,9 @@
+:root {
+  --nav-color: var(--black);
+  --nav-bg: var(--color3);
+  --text: var(--black);
+}
+
 .stop-scrolling {
   height: 100%;
   overflow: hidden;
@@ -6,9 +12,10 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-.nav-bar {
+/* .nav-bar {
   position: absolute;
   top: 15px;
   display: flex;
@@ -24,11 +31,32 @@
 .nav-bar img[alt="add friend"] {
   cursor: pointer;
   width: 20px;
+} */
+
+header {
+  top: 0;
+}
+
+#add-button {
+  cursor: pointer;
+  width: 20px;
 }
 
 .title {
-  text-align: center;
   margin: 4rem 0;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.title > h1 {
+  text-align: center;
+  padding-left: 20px;
+}
+
+.title > img {
+  position: relative;
+  left: 3.6rem;
 }
 
 .card {
@@ -63,7 +91,7 @@
   color: var(--white);
 }
 
-.logo {
+.card .logo {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -73,11 +101,11 @@
   bottom: 17px;
 }
 
-.logo img {
+.card .logo img {
   width: 17px;
 }
 
-.logo h4 {
+.card .logo h4 {
   color: var(--white);
   font-size: 8px;
   margin-top: 5px;
@@ -206,8 +234,8 @@
   }
 } */
 @media only screen and (min-width: 767px) {
-  .nav-bar {
+  /* .nav-bar {
     padding: 0 30%;
     padding-top: 3rem;
-  }
+  } */
 }

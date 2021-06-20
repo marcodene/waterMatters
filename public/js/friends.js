@@ -6,7 +6,6 @@ const $buttonBox = document.querySelector(".button-box");
 const $actionButton = document.querySelector("#action-button");
 const $textActionButton = document.querySelector("#action-button>h3");
 const $backButton = document.querySelector(".back");
-const $navBar = document.querySelector(".nav-bar");
 const $title = document.querySelector(".title");
 const $addButton = document.querySelector("#add-button");
 const $addFriendSection = document.querySelector(".add-friend-section");

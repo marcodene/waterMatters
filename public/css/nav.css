@@ -5,12 +5,12 @@ header {
   padding-left: 1.5rem;
 }
 
-.logo {
+header .logo {
   display: flex;
   align-items: center;
 }
 
-.logo img {
+header .logo img {
   height: 28px;
   margin-right: 8px;
 }
@@ -167,16 +167,16 @@ nav ul li:nth-child(5) {
 }
 
 @media only screen and (min-width: 1023px) {
-  .logo {
+  header .logo {
     position: absolute;
     left: 1.5rem;
   }
 
-  .logo img {
+  header .logo img {
     height: 37px;
   }
 
-  .logo h4 {
+  header .logo h4 {
     font-size: 1.2rem;
     position: relative;
   }

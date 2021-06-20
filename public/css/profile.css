@@ -1,3 +1,9 @@
+:root {
+  --nav-color: #fff;
+  --nav-bg: var(--color3);
+  --text: var(--white);
+}
+
 .back {
   display: none !important;
 }
@@ -32,17 +38,22 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
 body {
   background-color: var(--black);
 }
 
+.logo {
+  color: var(--white);
+}
+
 .btn-bar {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 17vh;
+  margin-bottom: 20vh;
 }
 
 .icon-bar {
@@ -76,7 +87,7 @@ body {
   right: 0;
   left: 0;
   margin: auto;
-  z-index: 2;
+  z-index: 1;
 }
 
 .card > .front,
@@ -114,7 +125,7 @@ body {
   font-size: 25px;
 }
 
-.logo {
+.card .logo {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -124,11 +135,11 @@ body {
   bottom: 17px;
 }
 
-.logo img {
+.card .logo img {
   width: 17px;
 }
 
-.logo h4 {
+.card .logo h4 {
   font-size: 8px;
   margin-top: 5px;
 }
