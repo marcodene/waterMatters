@@ -45,6 +45,10 @@ body {
   background-color: var(--black);
 }
 
+header {
+  top: 0;
+}
+
 .logo {
   color: var(--white);
 }
