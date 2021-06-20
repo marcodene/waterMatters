@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-PF5CPF5N2Z"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-    
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-PF5CPF5N2Z"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+      gtag("config", "G-PF5CPF5N2Z");
+    </script>
 
-  gtag('config', 'G-PF5CPF5N2Z');
-</script>
-
-    
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -42,7 +44,7 @@
       <h3 class="user-name"><%= user.username %></h3>
 
       <ul>
-        <li><a href="/main">MAIN</a></li>
+        <li><a href="/">MAIN</a></li>
         <li>
           <a><s>CALCULATOR</s></a>
         </li>
@@ -61,7 +63,7 @@
       </div>
       <nav>
         <ul class="container">
-          <li><a href="/main">MAIN</a></li>
+          <li><a href="/">MAIN</a></li>
           <li>
             <a><s>CALCULATOR</s></a>
           </li>

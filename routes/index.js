@@ -11,7 +11,7 @@ router.get("/welcome", forwardAuthenticated, (req, res) => {
 });
 
 // Calculator
-router.get("/", ensureAuthenticated, (req, res) =>
+router.get("/calculator", ensureAuthenticated, (req, res) =>
   res.render("calculator", {
     user: req.user,
     url: process.env.url,
@@ -19,7 +19,7 @@ router.get("/", ensureAuthenticated, (req, res) =>
 );
 
 // Main
-router.get("/main", (req, res) => res.render("main"));
+router.get("/", (req, res) => res.render("main"));
 
 // Contact
 router.get("/contact", (req, res) => res.render("contact"));
