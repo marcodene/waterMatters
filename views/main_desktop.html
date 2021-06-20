@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="\public\css\responsive\main_desktop.css">
-        <link rel="stylesheet" href="\public\css\default.css">
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+      <link rel="stylesheet" href="\public\css\responsive\main_desktop.css">
+      <link rel="stylesheet" href="\public\css\default.css">
         
         <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
 
     </head>
 
     <body>
-        <div class="main">
-        <div class="header">
+        <div class="content">
+        <div class="header PADDING">
             <h1>Food Calculator</h1>
             <h3>Lorem</h3>
         </div>
@@ -76,8 +81,42 @@
             <h3>ciao</h3>
 
         </div>
+        <div class="main">
 
-    <script src="\public\js\responsive\main_desktop.js"></script>
+        </div>
+    
+
+        <script id="template-esempio" type="text/html">
+          <button class="button-box">
+            <div class="cibo-box">
+            
+              <div class="col form">
+                <div class="fake-checkbox">
+                  <div class="fake-checkbox-2"></div>
+  
+                </div>
+              </div>
+              <div class="col">
+                <img
+                  class="food-img" 
+                  src="https://png.pngtree.com/png-clipart/20190828/ourmid/pngtree-cheese-pizza-png-image_1709797.jpg">
+              </div>
+              <div class="col info-food">
+                <h1 class="food-name">
+                  <span >{{name}}</span>
+                </h1>
+                <p class="food-description">
+                  <span >{{description}} {{waterPrint}} {{meal}}</span>
+                </p>
+              </div>
+            
+            </
+            </button>
+          
+        </script>  
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
+    <script src="\public\js\responsive\main_desktop.js" type="module"></script>
     </body>
 
 

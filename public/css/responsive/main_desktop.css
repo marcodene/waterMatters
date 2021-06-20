@@ -17,14 +17,21 @@ button{
 /* -------------------------------------------------------------------------------------------------- */
 
 
-.main{
-    background-color: violet;
+.content{
+    background-color: rgb(255, 255, 255);
 }
 
 .side-bar{
-    background-color: yellow;
+    background-color: #FDBD10;
 }
 /* -------------------------------------------------------------------------------------------------- */
+.PADDING{
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+
+
 
 .search-div{
     width: 80%;
@@ -53,8 +60,24 @@ button{
     grid-template-columns: 50% 50%;
 
     justify-content: space-between;
+
+    border: 0px solid transparent;
+    border-radius: 13px;
+    
 }
 
 .meal-img{
     width: 2em;
+}
+
+
+.main{
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20%;
+
+    justify-content: space-around;
+}
+
+.food-img{
+    width: 100%;
 }

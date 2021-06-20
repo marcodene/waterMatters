@@ -58,7 +58,7 @@ const data = [
   { name: "Lettuce", waterPrint: "24", description: "100 g", meal: "lunch" },
   {
     name: "Groundnuts",
-    waterPrint: "278",
+    waterPrint: "27go8",
     description: "100 g",
     meal: "lunch",
   },
