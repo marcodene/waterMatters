@@ -72,7 +72,8 @@
     </div>
     <div class="container">
       <div id="card-box">
-        <% for( let friend of user.friends ) { %>
+        <% if (user.friends.length != 0) { %> <% for( let friend of user.friends
+        ) { %>
         <div class="card" id="card">
           <h3 class="username"><%= friend.username %></h3>
           <img class="zoom-in" src="img/zoom-in-card.png" alt="a zoom icon" />
@@ -83,6 +84,8 @@
             <h4>WaterMatters</h4>
           </span>
         </div>
+        <% } %> <% } else { %>
+        <p>You have no friends</p>
         <% } %>
       </div>
 
