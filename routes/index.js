@@ -11,9 +11,9 @@ router.get("/welcome", forwardAuthenticated, (req, res) => {
 });
 
 // Calculator
-router.get("/calculator", ensureAuthenticated, (req, res) =>
+router.get("/calculator", (req, res) =>
   res.render("calculator", {
-    user: req.user,
+    user: req.user ? req.user : {},
     url: process.env.url,
   })
 );
@@ -29,6 +29,14 @@ router.get("/profile", ensureAuthenticated, (req, res) => {
   res.render("profile", {
     mode: "profile",
     user: req.user,
+    url: process.env.url,
+  });
+});
+
+// Result no login
+router.get("/result-no-login", (req, res) => {
+  res.render("result-no-login", {
+    user: {},
     url: process.env.url,
   });
 });

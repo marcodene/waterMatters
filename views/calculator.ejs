@@ -41,7 +41,9 @@
         <h4>WaterMatters</h4>
       </div>
 
-      <h3 class="user-name"><%= user.username %></h3>
+      <h3 class="user-name">
+        <%= user.username? user.username:"no account" %>
+      </h3>
 
       <ul>
         <li><a href="/">MAIN</a></li>
@@ -153,7 +155,10 @@
           <img class="calculate-img" src="/img/calc.png" />
         </button>
       </div> -->
-      <div class="calculate" onclick="handleCalculateClick()">
+      <div
+        class="calculate"
+        onclick="handleCalculateClick(<%- Object.keys(user).length !== 0 %>)"
+      >
         <h1>CALCULATE</h1>
         <img src="/img/calculator.png" alt="" />
       </div>
@@ -197,6 +202,10 @@
             <p>l/Kg</p>
           </div>
         </div>
+        <div
+          id="add-counter"
+          onclick="handleCounterClick('{{_id}}', '{{meal}}', 'increase')"
+        ></div>
         <div class="counter">
           <h1
             id="decrease"

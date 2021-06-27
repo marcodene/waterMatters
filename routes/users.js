@@ -355,6 +355,66 @@ router.post("/history", async (req, res) => {
 });
 
 /**
+ *  @description Add a meal to local storage if the user is not logged in
+ *  @method POST /users/history-no-login
+ */
+router.post("/history-no-login", async (req, res) => {
+  console.log("started");
+  try {
+    const user = {};
+    console.log(user);
+
+    // Check if the ids provided exist in the food database, otherwise a 404 Error will be thrown
+    await axios({
+      method: "get",
+      url: `${process.env.url}/api/food`,
+      data: req.body,
+    });
+
+    // Adding the new meal to user's history
+    user.history = {
+      foods: req.body,
+      date: Date.now(),
+    };
+    console.log(user);
+
+    let waterPrintAdded = 0;
+
+    // Adding each food of the meal to the foodsEaten list and updating the waterPrint value
+    for (let foodToAdd of req.body) {
+      let hasAlreadyBeenEaten = false;
+      console.log(foodToAdd);
+
+      // Updating the user's waterPrint value
+      const response = await axios.get(
+        `${process.env.url}/api/food/${foodToAdd.foodId}`
+      );
+      console.log(response.data);
+      console.log(user.waterPrint);
+      user.waterPrint = user.waterPrint || 0;
+      console.log(user.waterPrint);
+      user.waterPrint +=
+        parseInt(response.data.waterPrint) * foodToAdd.portions;
+      console.log(user.waterPrint);
+      waterPrintAdded +=
+        parseInt(response.data.waterPrint) * foodToAdd.portions;
+      console.log(waterPrintAdded);
+    }
+    console.log(user);
+    console.log(user.history);
+    console.log(waterPrintAdded);
+    user.history.waterPrint = waterPrintAdded;
+    console.log(user);
+
+    res.send({
+      user: user,
+    });
+  } catch (e) {
+    res.status(400).send(e);
+  }
+});
+
+/**
  *  @description getting user's footprint
  *  @method GET /users/water-print
  */

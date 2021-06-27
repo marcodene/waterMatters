@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="icon" href="img/plastic-bottle.svg" />
+    <link rel="stylesheet" href="<%= url %>/css/profile.css" />
+    <link rel="stylesheet" href="<%= url %>/css/default.css" />
+    <link rel="stylesheet" href="<%= url %>/css/nav.css" />
+    <title>Profile</title>
+  </head>
+  <body>
+    <base href="/" />
+    <header>
+      <div class="logo">
+        <img class="white-svg" src="img/plastic-bottle.svg" alt="" />
+        <h4>WaterMatters</h4>
+      </div>
+
+      <ul>
+        <li><a href="/">MAIN</a></li>
+        <li><a href="/calculator">CALCULATOR</a></li>
+        <li>
+          <a><s>PROFILE</s></a>
+        </li>
+        <li><a href="/friends">FRIENDS</a></li>
+        <li><a href="/contact">CONTACT</a></li>
+      </ul>
+
+      <div class="menu-btn">
+        <div class="menu-btn__burger"></div>
+      </div>
+      <nav class="nav-bar">
+        <ul class="container">
+          <li><a href="/">MAIN</a></li>
+          <li><a href="/calculator">CALCULATOR</a></li>
+          <li>
+            <a><s>PROFILE</s></a>
+          </li>
+          <li><a href="/friends">FRIENDS</a></li>
+          <li><a href="/contact">CONTACT</a></li>
+        </ul>
+
+        <div class="splash"></div>
+      </nav>
+    </header>
+    <div class="btn-bar">
+      <!-- <a href="/calculator"><img class="icon-bar" id="back-arrow" src="img/back-arrow.svg" alt=""></a> -->
+    </div>
+    <div class="background">
+      <a class="card rotate-card" href="/welcome">
+        <div class="front">
+          <h3 class="username">YOU DON'T HAVE AN ACCOUNT</h3>
+          <h3 class="waterPrint">... L</h3>
+          <span class="logo">
+            <img src="img/plastic-bottle-white.png" alt="logo" />
+            <h4>WaterMatters</h4>
+          </span>
+        </div>
+      </a>
+
+      <div class="container main">
+        <!-- RESULTS -->
+
+        <span class="full-width">
+          <div class="title"><h3>RESULT</h3></div>
+          <div class="result-text" id="result-text"></div>
+        </span>
+
+        <!-- STATS BIG -->
+        <div class="title"><h3>STATS</h3></div>
+
+        <div class="stats-block rotate-card">
+          <div class="front container">
+            GLASSES
+            <img src="img/stats/glass.svg" alt="" />
+            <span class="container">
+              <span class="stat-number" id="glasses"></span>
+              <p class="times">times</p>
+            </span>
+          </div>
+          <div class="back container">
+            GLASSES
+            <p>0.2L</p>
+          </div>
+        </div>
+
+        <div class="stats-block rotate-card">
+          <div class="front container">
+            BOTTLES
+            <img src="img/stats/bottle.svg" alt="" />
+            <span class="container">
+              <span class="stat-number" id="bottles"></span>
+              <p class="times">times</p>
+            </span>
+          </div>
+          <div class="back container">
+            BOTTLES
+            <p>0.5L</p>
+          </div>
+        </div>
+
+        <div class="stats-block rotate-card">
+          <div class="front container">
+            TOILET
+            <img src="img/stats/toilet.svg" alt="" />
+            <span class="container">
+              <span class="stat-number" id="toilet"></span>
+              <p class="times">times</p>
+            </span>
+          </div>
+          <div class="back container">
+            TOILET
+            <p>23L per KG</p>
+          </div>
+        </div>
+
+        <div class="stats-block rotate-card">
+          <div class="front container">
+            WASHING MACHINE
+            <img src="img/stats/washing-machine.svg" alt="" />
+            <span class="container">
+              <span class="stat-number" id="washing-machine"></span>
+              <p class="times">times</p>
+            </span>
+          </div>
+          <div class="back container">
+            WASHING MACHINE
+            <p>0.2L</p>
+          </div>
+        </div>
+
+        <div class="stats-block rotate-card">
+          <div class="front container">
+            DISHWASHER
+            <img src="img/stats/dishwasher.svg" alt="" />
+            <span class="container">
+              <span class="stat-number" id="dishwasher"></span>
+              <p class="times">times</p>
+            </span>
+          </div>
+          <div class="back container">
+            DISHWASHER
+            <p>0.5L</p>
+          </div>
+        </div>
+
+        <div class="stats-block rotate-card">
+          <div class="front container">
+            BATH
+            <img src="img/stats/bath.svg" alt="" />
+            <span class="container">
+              <span class="stat-number" id="bath"></span>
+              <p class="times">times</p>
+            </span>
+          </div>
+          <div class="back container">
+            BATH
+            <p>23L per KG</p>
+          </div>
+        </div>
+
+        <div class="stats-block rotate-card">
+          <div class="front container">
+            SHOWER
+            <img src="img/stats/shower.svg" alt="" />
+            <span class="container">
+              <span class="stat-number" id="shower"></span>
+              <p class="times">times</p>
+            </span>
+          </div>
+          <div class="back container">
+            SHOWER
+            <p>23L per KG</p>
+          </div>
+        </div>
+
+        <div class="stats-block rotate-card">
+          <div class="front container">
+            T-SHIRT
+            <img src="img/stats/t-shirt.svg" alt="" />
+            <span class="container">
+              <span class="stat-number" id="t-shirt"></span>
+              <p class="times">times</p>
+            </span>
+          </div>
+          <div class="back container">
+            T-SHIRT
+            <p>23L per KG</p>
+          </div>
+        </div>
+
+        <div class="stats-block rotate-card">
+          <div class="front container">
+            ATLANTIC
+            <img src="img/stats/atlantic.svg" alt="" />
+            <span class="container">
+              <span class="stat-number" id="atlantic"></span>
+              <p class="times">%</p>
+            </span>
+          </div>
+          <div class="back container">
+            ATLANTIC
+            <p>23L per KG</p>
+          </div>
+        </div>
+
+        <div class="stats-block rotate-card">
+          <div class="front container">
+            PACIFIC
+            <img src="img/stats/pacific.svg" alt="" />
+            <span class="container">
+              <span class="stat-number" id="pacific"></span>
+              <p class="times">%</p>
+            </span>
+          </div>
+          <div class="back container">
+            PACIFIC
+            <p>23L per KG</p>
+          </div>
+        </div>
+
+        <a class="container profile" href="/welcome"
+          ><span>CREATE AN ACCOUNT</span></a
+        >
+      </div>
+    </div>
+
+    <script>
+      console.log(localStorage.getItem("user"));
+      if (localStorage.getItem("user") != null) {
+        const user = JSON.parse(localStorage.getItem("user"));
+        console.log(user);
+        document.getElementById(
+          "result-text"
+        ).innerHTML = `${user.history.waterPrint} <span>L</span>`;
+        document.getElementById("glasses").innerHTML = `${Math.floor(
+          user.history.waterPrint / 0.2
+        )}`;
+        document.getElementById("bottles").innerHTML = `${Math.floor(
+          user.history.waterPrint / 0.5
+        )}`;
+        document.getElementById("toilet").innerHTML = `${Math.floor(
+          user.history.waterPrint / 7
+        )}`;
+        document.getElementById("washing-machine").innerHTML = `${Math.floor(
+          user.history.waterPrint / 23
+        )}`;
+        document.getElementById("dishwasher").innerHTML = `${Math.floor(
+          user.history.waterPrint / 40
+        )}`;
+        document.getElementById("bath").innerHTML = `${Math.floor(
+          user.history.waterPrint / 80
+        )}`;
+        document.getElementById("shower").innerHTML = `${Math.floor(
+          user.history.waterPrint / 110
+        )}`;
+        document.getElementById("t-shirt").innerHTML = `${Math.floor(
+          user.history.waterPrint / 2700
+        )}`;
+        document.getElementById("atlantic").innerHTML = `${Math.floor(
+          user.history.waterPrint / 323600000000
+        )}`;
+        document.getElementById("pacific").innerHTML = `${Math.floor(
+          user.history.waterPrint / 764330000000
+        )}`;
+      }
+    </script>
+    <script src="js/nav.js"></script>
+    <script src="js/profile.js"></script>
+  </body>
+</html>

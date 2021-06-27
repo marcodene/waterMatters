@@ -9,8 +9,8 @@ const meals = document.querySelectorAll(".meal");
 const $loadingItem = document.querySelector("#loading");
 const $calculateLoading = document.querySelector(".calculate-loading");
 
-const loadFood = async (meal) => {
-  const $mealBox = document.querySelector(`.${meal}`);
+const loadFood = async (meal, box) => {
+  const $mealBox = document.querySelector(`.${box}`);
   try {
     const response = await axios.get(
       `${url}/api/foods/${meal === "breakfast" ? meal : "lunch"}`
@@ -39,9 +39,13 @@ const loadFood = async (meal) => {
   }
 };
 
-loadFood("breakfast");
-loadFood("lunch");
-loadFood("dinner");
+loadFood("breakfast", "breakfast");
+loadFood("lunch", "lunch");
+loadFood("dinner", "dinner");
+
+loadFood("lunch", "breakfast");
+loadFood("breakfast", "lunch");
+loadFood("breakfast", "dinner");
 $breakfastBox.style.display = "grid";
 
 const changeBackground = (itemIndex) => {
@@ -73,6 +77,7 @@ const foodSelected = [];
 const handleCounterClick = (_id, meal, action) => {
   const $counter = document.querySelector(`.${meal} [id='${_id}'] #counter`);
   const $decrease = document.querySelector(`.${meal} [id='${_id}'] #decrease`);
+  const $increase = document.querySelector(`.${meal} [id='${_id}'] #increase`);
   const $selected = document.querySelector(`.${meal} [id='${_id}'] .selected`);
   let counter = parseInt($counter.innerText);
 
@@ -113,15 +118,19 @@ const handleCounterClick = (_id, meal, action) => {
     foodSelected[foodIndex].portions = 0;
     $decrease.classList.add("disabled");
     $selected.style.right = "0px";
+  } else if (counter >= 15) {
+    counter = 15;
+    $increase.classList.add("disabled");
   } else {
     $decrease.classList.remove("disabled");
+    $increase.classList.remove("disabled");
     $selected.style.right = "4px";
   }
 
   $counter.innerText = counter;
 };
 
-const handleCalculateClick = async () => {
+const handleCalculateClick = async (isLogged) => {
   if (foodSelected.length === 0) {
     return alert("Please select some food");
   }
@@ -129,9 +138,20 @@ const handleCalculateClick = async () => {
   $calculateLoading.style.display = "flex";
 
   try {
-    const response = await axios.post(`${url}/users/history`, foodSelected);
-    console.log(response);
-    window.location = `${url}/result`;
+    if (isLogged) {
+      const response = await axios.post(`${url}/users/history`, foodSelected);
+      console.log(response);
+      window.location = `${url}/result`;
+    } else {
+      const response = await axios.post(
+        `${url}/users/history-no-login`,
+        foodSelected
+      );
+      console.log(response.data.user);
+      localStorage.removeItem("user");
+      localStorage.setItem("user", JSON.stringify(response.data.user));
+      window.location = `${url}/result-no-login`;
+    }
   } catch (e) {
     alert("Somethig went wrong. Please refresh the page and try again");
   }
