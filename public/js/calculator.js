@@ -23,9 +23,10 @@ const loadFood = async (meal, box) => {
 
     $loadingItem.style.display = "none";
     for (let food of foods) {
-      if (meal === "dinner") {
-        food.meal = "dinner";
-      }
+      food.meal = box;
+      // if (meal === "dinner") {
+      //   food.meal = "dinner";
+      // }
 
       const imgNameFormatted = encodeURI(food.name);
       food = { ...food, img: `/img/foods/${imgNameFormatted}.png` };
